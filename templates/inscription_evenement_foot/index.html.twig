@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription evenement foot{% endblock %}
+{% form_theme formInscriptionFoot 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+    <div id="envenement_inscription">
+        <div class="containe_">
+            <h2 class="text-center">Veuillez vous inscrire à l'événement foot</h2>
+            <div class="col">
+               <strong>
+                   {{ form_start(formInscriptionFoot) }}
+                           {{ form_row(formInscriptionFoot.nom) }}
+                           {{ form_row(formInscriptionFoot.prenom) }}
+                          {{ form_row(formInscriptionFoot.telephone) }}
+                           {{ form_row(formInscriptionFoot.email) }}
+
+                   <button  type="submit" formnovalidate>Valider</button>
+                   {{ form_end(formInscriptionFoot) }}
+               </strong>
+
+            </div>
+            {% if is_granted('ROLE_ADMIN') %}
+                <div class="text-center" id="button-creerAfficher">
+                    <button>
+                        <a href="{{ path('inscription_liste') }} ">Afficher la liste des participants</a>
+                    </button>
+                </div>
+            {% endif%}
+        </div>
+
+    </div>
+
+{% endblock %}

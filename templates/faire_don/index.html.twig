@@ -1,0 +1,212 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Faire un don{% endblock %}
+
+{% block body %}
+
+
+
+    <div class="comnponent_titre">
+        <h1>Faites un don !</h1>
+       <p>
+           Les bénévoles de l’association le souci des nôtres s’engagent quotidiennement <br>
+           dans les missions les plus diverses. Ils investissent leur temps <br>
+           et leur énergie pour venir en aide et soulager les souffrances. <br>
+           Tout ce qui est humain est nôtre
+
+       </p>
+    </div>
+
+    <div class="component_don">
+       <div class="titre_don">
+           <h3>1. Mon soutien</h3>
+           <div class="donner_don">
+               <button class="btn_je_donnes_fois">Je donnes une fois</button>
+               <button class="btn_je_donnes_mois">Je donnes tous les mois</button>
+           </div>
+           <!---------euro--------------->
+           <div class="euro">
+               <div class="text-center">
+                   <button>90 €</button>
+                   <button>130 €</button>
+                   <button>150 €</button>
+                   <button>200 €</button>
+               </div>
+           </div>
+           <!---------champs--------------->
+           <div class="champs_euro text-center">
+               <input type="text" name="euro" placeholder="saissiez un don"><i class="fas fa-euro-sign"></i>
+           </div>
+       </div>
+
+
+        <div class="mes_coordonnes titre_don">
+            <h3>2. Mes coordonnées</h3>
+            <!---------champs email--------------->
+            <div class="champs_saisissez_don">
+                <i class="fas fa-envelope"></i>
+                <input type="text" name="euro" placeholder="Email">
+            </div>
+            <div class="choixbox">
+                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                 Je fais un don au nom d'une organisation ou d'une sociéte
+            </div>
+            <div class="civilite_prenom">
+                <select name="civilite" class="civilite_mes_coordonnees">
+                    <option value="civilité">Civilité</option>
+                    <option value="mme">Mme</option>
+                    <option value="mr">Mr</option>
+                </select>
+                <div class="prenom">
+                    <input type="text" name="euro" placeholder="Prénom">
+                </div>
+            </div>
+            <div class="nom_adresse_adresse_complement">
+                <div>
+                    <input type="text" name="euro" placeholder="Nom">
+                </div>
+                <div>
+                    <input type="text" name="euro" placeholder="Adresse">
+                </div>
+                <div>
+                    <input type="text" name="euro" placeholder="Complément adresse">
+                </div>
+            </div>
+            <div class="ville_code_postal">
+                <div id="code_postal">
+                    <input type="text" name="euro" placeholder="Code postal">
+                </div>
+                <div>
+                    <input type="text" name="euro" placeholder="Ville">
+                </div>
+            </div>
+            <div class="pays">
+                <select name="pays" id="pays">
+                    <option value="pays">Pays</option>
+                    <option value="france">FRANCE</option>
+                    <option value="espane">ESPAGNE</option>
+                    <option value="portgal">PORTAGAL</option>
+                    <option value="italie">ITALIE</option>
+                    <option value="us">US</option>
+                    <option value="maroc">MAROC</option>
+                    <option value="senegal">SENEGAL</option>
+                </select>
+            </div>
+            <div class="date_naissance">
+                <label for="date-naissance">Date de naissance</label> <BR>
+                <input type="date" name="date" id="date_naissance">
+            </div>
+            <div>
+                <p>Je souhaite mon reçu fiscal</p>
+                <div class="choixbox_fiscal">
+                    <input type="checkbox" id="email" name="" value="email"> Par email
+                </div>
+                <div class="choixbox_fiscal">
+                    <input type="checkbox" id="email" name="" value="email"> Par courrier
+                </div>
+                <div class="texte_fiscale">
+                    <p>
+                        Champs obligatoires (ces informations sont <br>
+                        indispensables pour bénéficier de votre réduction fiscale)
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+            <div class="titre_don">
+                <h3>3. Mon règlement</h3>
+                <div class="securite">
+                    <i class="fas fa-lock"></i>plateform de paiement 100% sécurisée
+                </div>
+
+                <div class="component_paiement_carte_bancaire">
+                    <div class="titre_carte_bancaire">
+                        <h5>JE PAIE PAR CARTE BANCAIRE</h5> <br>
+                        <div class="img_carte_bancaire">
+                            <img src="{{asset('img/don/carte_paiement.jpg')  }}" alt="carte_bancaire">
+                        </div>
+                        <div class="carte_reglement">
+                            <i class="fas fa-credit-card"></i> <input type="text" name="bancaire" placeholder="saisissez votre numéro bancaire">
+                        </div>
+                    </div>
+                    <div class="moi_anne_code">
+                        <div class="mois">
+                            <select name="pays" id="pays">
+                                <option value="pays">mois</option>
+                                <option value="france">janvier</option>
+                                <option value="espane">février</option>
+                                <option value="portgal">mars</option>
+                                <option value="italie">avril</option>
+                                <option value="us">mai</option>
+                                <option value="maroc">juin</option>
+                                <option value="senegal">juillet</option>
+                                <option value="us">août</option>
+                                <option value="maroc">septembre</option>
+                                <option value="senegal">octobre</option>
+                                <option value="us">novembre</option>
+                                <option value="maroc">décembre</option>
+                            </select>
+                        </div>
+                        <div class="annee">
+                            <select name="pays" id="pays">
+                                <option value="pays">année</option>
+                                <option value="france">2021</option>
+                                <option value="espane">2020</option>
+                                <option value="portgal">2019</option>
+                                <option value="italie">2018</option>
+                                <option value="us">2017</option>
+                                <option value="maroc">2016</option>
+                                <option value="senegal">2015</option>
+                            </select>
+                        </div>
+                        <div class="code_secret">
+                            <input type="text" name="bancaire" placeholder="code secret">
+                        </div>
+                    </div>
+
+                    <div class="valide_paiment_carte">
+                        <button>JE VALIDE</button>
+                    </div>
+                </div>
+
+                <div class="valide_paiment_payple">
+                   <h5><a href="">Payer avec paypal</a></h5>
+                    <button>JE VALIDE</button>
+                </div>
+
+            </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

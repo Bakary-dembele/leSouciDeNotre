@@ -1,0 +1,125 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+<!--<form method="post" class="container">-->
+   <!--<div class="text-center">-->
+    {# {% if error %}
+         <!--  <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>-->
+       {% endif %}
+
+       {% if app.user %}
+           <div class="mb-3">
+               You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+           </div>
+       {% endif %} #}
+
+<!--
+       <img src="{# {{ asset('img/logo.jpeg') |imagine_filter('carre') }}" #}alt="logo">
+       <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+       <label for="inputEmail">Email</label>
+       <input type="email" value="{# {{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
+       <label for="inputPassword">Mot de passe</label>
+       <input type="password" name="password" id="inputPassword" class="form-control" required>
+
+       <input type="hidden" name="_csrf_token"
+              value=" {#  {{ csrf_token('authenticate') }}#}">
+
+
+       <div class="checkbox mb-3">
+           <label>
+               <input type="checkbox" name="_remember_me"> Souviens-toi de moi
+           </label>
+       </div>
+
+
+       <button class="btn btn-lg btn-primary" type="submit">
+           S'identifier
+       </button>
+
+   </div> --->
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success text-center" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('warning') %}
+        <div class="alert alert-warning text-center" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('danger') %}
+        <div class="alert alert-danger text-center" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+
+
+    <section id="cover" class="min-vh-100">
+        <div id="cover-caption">
+            <div class="container">
+                <div class="row text-black">
+                    <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+                       <!--- <img src="{# {{ asset('img/logo.jpeg') |imagine_filter('carre') }} #}" alt="logo">----->
+                        <div class="px-1">
+                            <form method="post" class="justify-content-center">
+                                <h5 class="display-5 py-2 text-truncate">Connectez-vous à votre compte</h5>
+
+                                    {% if error %}
+                                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                    {% endif %}
+
+                                    {% if app.user %}
+                                       <!--- <div class="mb-3">
+                                            You are logged in as {{ app.user.nom | capitalize }} {{ app.user.prenom | capitalize }}, <a href="{{ path('app_logout') }}">Logout</a>
+                                        </div> -->
+                                    {% endif %}
+
+                                <div class="form-group">
+                                    <label class="sr-only">Email</label>
+                                     <input type="email" value= " {{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus placeholder="Adresse e-mail">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only">Mot de passe</label>
+                                    <input type="password" name="password" id="inputPassword" class="form-control" required placeholder="Mot de passe">
+                                </div>
+                                    <input type="hidden" name="_csrf_token"
+                                           value="{{ csrf_token('authenticate') }}">
+                                <div class="form-group text-left">
+                                    <label>
+                                        <input type="checkbox" name="_remember_me"> Souviens-toi de moi
+                                    </label>
+                                </div>
+
+                                <button class="" type="submit" formnovalidate>
+                                    S'identifier
+                                </button>
+                                <div class="form-group">
+                                    <div  class="d-flex justify-content-between">
+                                        <div class="texte_motPasse_inscrire">
+                                            <a href="{{ path('app_forgotten_password') }}">Mot de passe oublié?</a>
+                                        </div>
+                                        <div>
+                                            <P>Pas de compte ? <a href="{{ path('app_register') }}">S'incrire</a></P>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!---------------------image login--------------------->
+                              <div class="image_login">
+                                  <i class="fas fa-user-circle"></i>
+                              </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!--</form>-->
+
+
+{% endblock %}

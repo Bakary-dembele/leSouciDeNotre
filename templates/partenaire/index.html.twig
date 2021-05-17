@@ -1,0 +1,131 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Partenaire{% endblock %}
+
+{% block body %}
+
+
+        <!------------image--->
+        <div>
+            <div class="img_partenaire">
+                <button type="button" class="btn btn-danger btn-circle btn-xl"><a class="text-decoration-none" href="{{ path('faire_don')}}">FAIRE UN DOM</a></button>
+                <img src="{{ asset('img/partenaire.jpg') }}" alt="partenaire">
+                <h1 class="titre_partaire">Nos partenaires</h1>
+            </div>
+        </div>
+
+        <!------------titre------------>
+       <!-- <div>
+            <div id="slider_partenaire">
+                <h6>Partenaire</h6>
+            </div>
+
+        </div> -->
+
+
+        <!------------partenaire titre------------>
+    <div class="text-center" id="titre_partenaire">
+        <h2>NOS PARTENAIRES ET SOUTIENS</h2>
+        <P>
+            Des institutions et des entreprises soutiennent Le souci de nôtre au quotidien. <br>
+            Découvrez leurs contributions
+        </P>
+    </div>
+
+    <!------------partenaire titre----------->
+    <h3 class="text-center titre_parternaire_componant">Partenaires</h3>
+
+    <div class="parent_partenaire">
+      <!-------------image 1---------------->
+                <div class="card shadow-1 hoverable-1 rounded-3" id="component_image">
+                  <div class="image_componant"> <img src="{{ asset('img/partenaire/eco_whate.png') }}" alt="partenaire"></div>
+                    <div class="card-header">ECO WHAT</div>
+                    <div class="card-content">
+                        <p>
+                            Dans le cadre de son activité, ECO WHAT propose des kits
+                            d'équipements techniques sous forme de "WHATBOX" pour réduire les flux énergétiques
+                            dans les logements, auprès des particuliers ou via des acteurs de la précarité énergétique...
+                        </p>
+                    </div>
+                </div>
+
+        <!-------------image 2---------------->
+            <div class="card shadow-1 hoverable-1 rounded-3" id="component_image">
+                <div class="image_componant"> <img src="{{ asset('img/partenaire/said.png') }}" alt="partenaire"></div>
+                <div class="card-header">Said AMZIL</div>
+                <div class="card-content">
+                    <p>
+                        Lancé en 2018 par l'entrepreneur <strong>Said Amzil,</strong> le projet Puits 100 a pour objectif de combler
+                        les besoins fondamentaux et éducatifs de 100 villages dans le monde. Ce projet se déroule en 3 étape: offri l'accès à l'eau potable
+                        en forant 100 puis
+                    </p>
+                </div>
+            </div>
+
+        <!-------------image 3---------------->
+            <div class="card shadow-1 hoverable-1 rounded-3" id="component_image">
+                <div class="image_componant"> <img src="{{ asset('img/partenaire/stagiaire.png') }}" alt="partenaire"></div>
+                <div class="card-header">Ecole Royale Militaire de Bruxelles</div>
+                <div class="card-content">
+                    <p>
+                        Les stagiaires internationaux de l'<strong>Ecole Royale Militaire de Bruxelles</strong>
+                        se mobilisent, ainsi que leur entourage professionnel et personnel pour collecter les
+                        fonds nécessaires au forage de puits mécanisés.
+                    </p>
+                </div>
+            </div>
+
+    </div>
+
+    <!-----------------------slider------------------------>
+    <div class="slider_soutien">
+    <div class="container custom-container">
+        <h5 class="text-center">Soutiens</h5>
+        <div class="caroulix" id="third-caroulix" data-ax="caroulix">
+            <div class="caroulix-item">
+                <div class="grix xs1 sm3">
+                    <div class="">
+                        <div class="card-content">
+                            <div class="image_componant"> <img src="{{ asset('img/partenaire/marie.png') }}" alt="partenaire"></div>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <div class="card-content">
+                            <div class="image_componant"> <img src="{{ asset('img/partenaire/deput.png') }}" alt="partenaire"></div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="card-content">
+                            <div class="image_componant"> <img src="{{ asset('img/partenaire/marie_ancien.png') }}" alt="partenaire"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="caroulix-item">
+                <div class="grix xs1 sm3">
+                    <div class="">
+                        <div class="card-content">
+                            <div class="image_componant"> <img src="{{ asset('img/partenaire/elute.png') }}" alt="partenaire"></div>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <div class="card-content">
+                            <div class="image_componant"> <img src="{{ asset('img/partenaire/elut.png') }}" alt="partenaire"></div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="card-content">
+                            <div class="image_componant"> <img src="{{ asset('img/partenaire/elute1.png') }}" alt="partenaire"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+
+<div class="conponent_register">
+    <div class="container h-100 col-md-6" >
+        <h2 class="text-center">S'inscrire</h2>
+        <strong>
+            {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.nom)}}
+            {{ form_row(registrationForm.prenom) }}
+            {{ form_row(registrationForm.telephone) }}
+            {{ form_row(registrationForm.email) }}
+            <!-- <input type="hidden" name="_csrf_token"
+               value="{# registrationForm.groupes #}">
+        <div class="form-group text-left">-->
+            {{ form_row(registrationForm.password) }}
+            {{ form_row(registrationForm.groupe) }}
+            <button class="button_inscrire" type="submit" formnovalidate id="inscrire">S'inscrire</button>
+            {{ form_end(registrationForm) }}
+        </strong>
+    </div>
+
+</div>
+
+{% endblock %}

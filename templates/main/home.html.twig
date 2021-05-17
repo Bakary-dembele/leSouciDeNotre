@@ -1,0 +1,226 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success text-center" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('warning') %}
+        <div class="alert alert-warning text-center" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('danger') %}
+        <div class="alert alert-danger text-center" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="sliderNews">
+        <button type="button" class="btn btn-danger btn-circle btn-xl"><a class="text-decoration-none" href="{{ path('faire_don')}}">FAIRE UN DOM</a></button>
+        <div class="slidesNews">
+            <div class="slideNews">
+            </div>
+            <div class="slideNews">
+            </div>
+            <!--   <div class="slideNew">
+                   <div class="slideNew-data">
+                       <h1>This is Slide # 3</h1>
+                       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit veniam fuga voluptatem voluptas illum deserunt soluta quasi ipsam quam qui eligendi autem laudantium inventore, voluptatibus blanditiis nobis, tempora architecto atque.</p>
+                       <button>SHARE</button>
+                   </div>
+               </div>-->
+        </div>
+  <!---
+        <button class="arrows prev" onclick="plusslides(-1)">
+            <span><i class="fas fa-angle-left"></i></span>
+        </button>
+        <button class="arrows next" onclick="plusslides(1)">
+            <span><i class="fas fa-angle-right"></i></span>
+        </button> ---->
+
+        <div class="dots">
+            <span onclick="currentslide(1)"></span>
+            <span onclick="currentslide(2)"></span>
+            <!--  <span onclick="currentslide(3)"></span> --->
+        </div>
+    </div>
+
+
+
+    <!-------------------section titre------------------>
+   <div class="section_un">
+       <article>
+           <br>
+           <h1>Le souci de nôtre</h1>
+           <p>
+               La mission principale de Souci de nôtre est d’aider les plus démunis, sans critère de distinctions,<br>
+               par le biais d’actions solidaires, humanitaires ou sociales, en France ou à l’étranger à travers des<br>
+               maraudes, distributions et collectes alimentaires auprès de petites ou grandes surfaces, distributions<br>
+               de colis, aide aux orphelinats à l’étranger (envoi de médicaments, équipements sportifs, fournitures<br>
+               scolaires...), financement de construction de puits à l’étranger, organisation d’événements sportifs<br>
+               et rencontres pour financer des actions précises.
+           </p>
+       </article>
+   </div>
+    <!-------------------section video------------------>
+    <div class="section_deux">
+                <div>
+                    <article>
+                        <h4>Notre vison</h4>
+                        <p>
+                            Le souci de nôtre s’engage à contribuer à la construction d’un monde dans lequel chaque être humain peut<br>
+                            vivre et s’épanouir dignement. Son objectif principal est d’améliorer de manière durable les conditions<br>
+                            d’existence et le développement des populations les plus défavorisées en France et dans le Monde.
+                        </p>
+                    </article>
+                    <article>
+                        <h4>Notre mission </h4>
+                        <p>
+                            La mission principale de Souci de nôtre est d’aider les plus démunis, sans critère de distinctions,<br>
+                            par le biais d’actions solidaires, humanitaires ou sociales, en France ou à l’étranger à travers des<br>
+                            maraudes, distributions et collectes alimentaires auprès de petites ou grandes surfaces, distributions<br>
+                        </p>
+                    </article>
+                </div>
+            <!--------------------->
+                <div class="iframe">
+                    <video width="320" height="240" controls>
+                        <source src="img/engage/maraude_accueil.mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+        </div>
+    <!-------------------section dom------------------>
+    <div class="section_trois">
+        <div>
+            <p>Aidez-nous à offrir un futur aux nécessités. <br>
+                Tout ce qui est humain est nôtre
+            </p>
+           <div> <img src="{{asset('img/logopaiement.png')  }}" alt="carte_bancaire"></div>
+            <button type="submit"><a href="{{ path('faire_don') }}">Faire un don</a></button>
+        </div>
+    </div>
+    <!-------------------section images------------------>
+    <div class="image_chiffre">
+         <div class="wrappe">
+             <div class="card-image">
+                 <img src="{{asset('img/main/home3.jpg')  }}" alt="">
+                 <div class="info">
+                     <h3>LES SANS ABRIS</h3>
+                     <p>
+                         Le souci de nôtre met en place des maraudes
+                         à destination des personnes sans abri, à la rue.
+                         Le but est de maintenir un lien social, d'encourager
+                         l'orientation vers des travailleurs sociaux et d'alerter
+                         les pouvoirs publics en recensant les situations rencontrées.
+                     </p>
+                 </div>
+             </div>
+         </div>
+             <div class="wrappe">
+                 <div class="card-image">
+                     <img src="{{asset('img/main/enfants.jpg')  }}" alt="">
+                     <div class="info">
+                         <h3>LA COLLECTE</h3>
+                         <p>
+                             Le souci de nôtre recollecte deux fois
+                             par semaine des alimentaires, des argents et des vêtements.
+                         </p>
+                     </div>
+                 </div>
+             </div>
+             <div class="wrappe">
+                 <div class="card-image">
+                     <img src="{{asset('img/main/tanta.jpg')  }}" alt="">
+                     <div class="info">
+                         <h3>LES MARAUDES</h3>
+                         <p>
+                             Le souci de nôtre met en place des maraudes
+                             à destination des personnes sans abri, à la rue.
+                             Le but est de maintenir un lien social.
+                         </p>
+                     </div>
+                 </div>
+             </div>
+            <div class="wrappe">
+                <div class="card-image">
+                    <img src="{{asset('img/home2.jpg')  }}" alt="">
+                    <div class="info">
+                        <h3>LA JEUNESSE</h3>
+                        <p>
+                            Chaque année Le souci de nôtre organise,
+                            un concours de jeux pour les enfants.
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+ </div>
+
+
+
+
+    <!-------------------section chiffre------------------>
+    <div class="section_chiffre">
+        <h2 class="text-center">Quelques chiffres</h2>
+        <div class="counter-up">
+            <div class="content_counter">
+                <div class="box-counter">
+                    <div class="icon"><i class="fas fa-utensils"></i></div>
+                    <div class="counter">12750</div>
+                    <div class="text-counter">Kits</div>
+                </div>
+                <div class="box-counter">
+                    <div class="icon"><i class="fas fa-users"></i></div>
+                    <div class="counter">200</div>
+                    <div class="text-counter">Membres</div>
+                </div>
+                <div class="box-counter">
+                    <div class="icon"><i class="fas fa-tint"></i></div>
+                    <div class="counter">200</div>
+                    <div class="text-counter">Puits</div>
+                </div>
+                <div class="box-counter">
+                    <div class="icon"><i class="fas fa-hand-paper"></i></div>
+                    <div class="counter">500</div>
+                    <div class="text-counter">Kits grand froid</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        $(document).ready(function (){
+           $(".counter").counterUp({
+             delay: 10,
+               time: 1200
+           });
+        });
+    </script>
+
+    <!-----scrip------------->
+    <script src="{{ asset('js/slider_home.js') }}"></script>
+
+
+
+
+
+    {# login afficher le nom et prénom de l'utilisateur courant #}
+   <!-- <div class="col-sm-3 offset-sm-9 text-right"> ->
+        <p>Date du jour : {# {{ "now" | date('d/m/Y') }} #}</p>
+       <p>Vous êtes connecté en tant que :{#  {{ app.user.nom | upper }} {{ app.user.prenom | capitalize }} #}</p>
+    </div> -->
+
+{% endblock %}
+
+

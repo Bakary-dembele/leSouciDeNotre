@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Collecte{% endblock %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+
+
+<div class="creer_maraude">
+    <div class="container" id="conponent_creer_collecte">
+        <div class="row">
+            <div class="col-12 sm-12 md-12 col-lg-">
+                <h1 class="text-center">Créer une nouvelle collecte</h1>
+                {{ form_start(form) }}
+                {{ form_row(form.details) }}
+                {{ form_row(form.dateHeure) }}
+                {{ form_row(form.dateCloture) }}
+                {{ form_row(form.adresse) }}
+                {{ form_row(form.nombreDePlace) }}
+            </div>
+            <div class="d-flex justify-content-center col-12 sm-12 md-12 col-lg-">
+                <div class="">
+                    <a {{ path('collecte_liste') }}">
+                    <button type="submit" class="btn btn-success " formnovalidate>Enregistrer</button>
+                    </a>
+                    {{ form_end(form) }}
+                </div>
+                <div class="">
+                    <a href="{{ path('collecte_liste') }}" class="btn btn-danger ">Retour</a>
+
+                </div>
+            </div>
+        </div>
+        </div>
+
+</div>
+</div>
+
+
+{% endblock %}

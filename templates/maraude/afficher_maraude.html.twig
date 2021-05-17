@@ -1,0 +1,93 @@
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="afficher_maraude">
+    <h1 class="text-center my-4">Afficher une maraude</h1>
+    <div class="row col-sm-10 offset-sm-1">
+        <table class="table table-light table-hover col-sm-6">
+            <tr>
+                <th>Nom de la maraude : </th>
+                <td>{{ maraude.nom }}</td>
+            </tr>
+            <tr>
+                <th>Date et heure de la maraude : </th>
+                <td>{{ maraude.dateDebut | date('d/m/Y H:i') }}</td>
+            </tr>
+            <tr>
+                <th>Date limite d'inscription : </th>
+                <td>{{ maraude.dateCloture | date('d/m/Y H:i') }}</td>
+            </tr>
+            <tr>
+                <th>Nombre de places : </th>
+                <td>{{ maraude.nbInscriptionsMax }}</td>
+            </tr>
+            <tr>
+                <th>Durée en heure : </th>
+                <td>{{ maraude.duree }}</td>
+            </tr>
+            <tr>
+                <th>Description et infos : </th>
+                <td>{{ maraude.descriptionInfos }}</td>
+            </tr>
+        </table>
+        <table class="table table-light table-hover col-sm-6">
+            <tr>
+                <th>Groupe: </th>
+                <td>{{ maraude.groupe.nomGroupe }}</td>
+            </tr>
+            <tr>
+                <th>Lieu : </th>
+                <td>{{ maraude.lieu.nomLieu }}</td>
+            </tr>
+            <tr>
+                <th>Rue : </th>
+                <td>{{ maraude.lieu.rue }}</td>
+            </tr>
+            <tr>
+                <th>Code Postal : </th>
+                <td>{{ maraude.lieu.ville.codePostal }}</td>
+            </tr>
+            <tr>
+                <th>Latitude : </th>
+                <td>{{ maraude.lieu.latitude }}</td>
+            </tr>
+            <tr>
+                <th>Longitude : </th>
+                <td>{{ maraude.lieu.longitude }}</td>
+            </tr>
+        </table>
+    </div>
+
+
+    <!------liste participants--->
+    <div class="liste_collecte_participant">
+
+          <div>
+               <h4 class="my-3">Liste des participants inscrits</h4>
+               <table class="table table-striped table-light table-bordered table-hover">
+                   <th>Nom</th>
+                   <th>Prénom</th>
+                   {% for inscrit in maraude.inscriptions %}
+                       <tr>
+                           <td>
+                               <a href="{{ path('profilUsers',{'id': inscrit.user.id}) }}">{{ inscrit.user.nom | capitalize }} </a>
+                           </td>
+                           <td>
+                               <a href="{{ path('profilUsers',{'id': inscrit.user.id}) }}">{{ inscrit.user.prenom | capitalize }} </a>
+                           </td>
+                       </tr>
+                   {% endfor %}
+               </table>
+           </div>
+           <div class="conponent_button_retour_maraude">
+                <button class="button_retour_afficherMaraude">
+                    <a href="{{ path ("maraude_planning") }}" class="">Retour</a>
+                </button>
+          </div>
+      </div>
+  </div>
+
+
+{% endblock %}
+

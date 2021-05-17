@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier l'événement{% endblock %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+ <!------------------------ENVENEMENT-------------------------------------------->
+<div id="component_creerModifierEnvenement">
+    <div class="container w-50" >
+        <div class="col" id="form">
+                <h1 class="text-center">Modifier l'événement</h1> <br>
+              <strong>
+                  {{ form_start(form) }}
+                      {{ form_row(form.titre) }}
+                      {{ form_row(form.descriptif) }}
+                      {{ form_row(form.prix) }}
+                      {{ form_row(form.date) }}
+                      {{ form_row(form.heureDebut) }}
+                      {{ form_row(form.heureFin) }}
+                      {{ form_row(form.adresse) }}
+                      {{ form_row(form.details) }}
+                  <div class="d-flex justify-content-center" id="bouton">
+                      <button class="button_modifier" formnovalidate>Enregistrer</button>
+                  {{ form_end(form) }}
+                      <button class="button_retour" formnovalidate>Retour</button>
+                    <form method="post" action="{{ path('evenement_supprimer', {'id': evenement.id}) }}" onsubmit="return confirm('Êtes-vous sûr de bien vouloir supprimer cet élément?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ evenement.id) }}">
+                        <button class="button_supprimer">Supprimer</button>
+                    </form>
+            </div>
+              </strong>
+            </div>
+        <div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

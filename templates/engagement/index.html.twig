@@ -1,0 +1,138 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Engagement{% endblock %}
+
+{% block body %}
+    <div class="sliderNews">
+        <button type="button" class="btn btn-danger btn-circle btn-xl"><a class="text-decoration-none" href="{{ path('faire_don')}}">FAIRE UN DOM</a></button>
+        <div class="slidesNews">
+            <div class="slideNews">
+            </div>
+            <div class="slideNews">
+            </div>
+            <div class="slideNews">
+            </div>
+
+
+
+            <!--   <div class="slideNew">
+                   <div class="slideNew-data">
+                       <h1>This is Slide # 3</h1>
+                       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit veniam fuga voluptatem voluptas illum deserunt soluta quasi ipsam quam qui eligendi autem laudantium inventore, voluptatibus blanditiis nobis, tempora architecto atque.</p>
+                       <button>SHARE</button>
+                   </div>
+               </div>-->
+        </div>
+        <!---
+              <button class="arrows prev" onclick="plusslides(-1)">
+                  <span><i class="fas fa-angle-left"></i></span>
+              </button>
+              <button class="arrows next" onclick="plusslides(1)">
+                  <span><i class="fas fa-angle-right"></i></span>
+              </button> ---->
+
+        <div class="dots">
+            <span onclick="currentslide(1)"></span>
+            <span onclick="currentslide(2)"></span>
+            <span onclick="currentslide(3)"></span>
+        </div>
+    </div>
+
+
+    <div id="component-engagement">
+        <!--------section titre------>
+        <div class="text-center" id="titre_engagement">
+            <h2>ENGAGEMENT</h2>
+            <P>
+                Retrouvez toute l'activités de l'association !
+            </P>
+        </div>
+        <!--------section 1 video------>
+        <div class=" section_video">
+            <div class="">
+                <h4>NOTRE ENGAGEMENT EN VIDÉO</h4>
+                <iframe width="560" height="315"
+                        src="https://www.youtube.com/embed/GmgNzKgJVxY"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                </iframe>
+            </div>
+            <div class="section_video_texte">
+                <strong>Notre vison</strong>
+                <p>
+                    Le souci de nôtre s’engage à contribuer à la construction d’un monde dans lequel chaque être humain peut<br>
+                    vivre et s’épanouir dignement. Son objectif principal est d’améliorer de manière durable les conditions<br>
+                    d’existence et le développement des populations les plus défavorisées en France et dans le monde.
+                </p>
+                <strong>Notre mission</strong>
+                <P>
+                    La mission principale de Souci de nôtre est d’aider les plus démunis, sans critère de distinctions,<br>
+                    par le biais d’actions solidaires, humanitaires ou sociales, en France ou à l’étranger à travers des<br>
+                    maraudes, distributions et collectes alimentaires auprès de petites ou grandes surfaces, distributions<br>
+                    de colis, aide aux orphelinats à l’étranger (envoi de médicaments, équipements sportifs, fournitures<br>
+                    scolaires...), financement de construction de puits à l’étranger, organisation d’événements sportifs<br>
+                    et rencontres pour financer des actions précises.
+
+                </P>
+            </div>
+        </div>
+
+        <!--------section 2 video------>
+        <div class="component">
+            <h4 class="text-center">À voir également</h4>
+            <div class="section2_parent">
+                <div class="section_video2">
+                    <div class="texte_2">
+                        <strong>Notre vison</strong>
+                        <p>
+                            Le souci de nôtre s’engage à contribuer à la construction d’un monde dans lequel chaque être humain peut
+                            vivre et s’épanouir dignement.
+                        </p>
+                            <strong>Notre mission</strong>
+                        <P>
+                            La mission principale de Souci de nôtre est d’aider les plus démunis, sans critère de distinctions.
+                        </P>
+                    </div>
+                    <div class="video_2">
+                        <h6>NOTRE ENGAGEMENT EN VIDÉO</h6>
+                        <iframe width="300" height="200"
+                                src="https://www.youtube.com/embed/GmgNzKgJVxY"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+                <div class="section_video2">
+                    <div class="texte_2">
+                        <strong>Notre vison</strong>
+                        <p>
+                            Le souci de nôtre s’engage à contribuer à la construction d’un monde dans lequel chaque être humain peut
+                            vivre et s’épanouir dignement.
+                        </p>
+                        <strong>Notre mission</strong>
+                        <P>
+                            La mission principale de Souci de nôtre est d’aider les plus démunis, sans critère de distinctions.
+                        </P>
+                    </div>
+                    <div class="video_2">
+                        <h6>NOTRE ENGAGEMENT EN VIDÉO</h6>
+                        <iframe width="300" height="200"
+                                src="https://www.youtube.com/embed/GmgNzKgJVxY"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-----scrip------------->
+    <script src="{{ asset('js/slider_home.js') }}"></script>
+
+
+{% endblock %}

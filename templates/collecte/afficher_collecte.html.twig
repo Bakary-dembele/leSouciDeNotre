@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Afficher Collecte{% endblock %}
+
+
+{% block body %}
+
+    <!------afficher la collecte--->
+    <div class="afficher_collecte">
+        <div class="container">
+            <h1 class="text-center my-4">Afficher une collecte</h1>
+            <div class="row col-sm-10 offset-sm-1">
+                <table class="table table-light table-hover ">
+                    <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ collecte.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Details</th>
+                        <td>{{ collecte.details }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date/début</th>
+                        <td>{{ collecte.dateHeure ? collecte.dateHeure|date('Y-m-d H:i:s') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date/clôture</th>
+                        <td>{{ collecte.dateCloture ? collecte.dateCloture|date('Y-m-d H:i:s') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Adresse</th>
+                        <td>{{ collecte.adresse }}</td>
+                    </tr>
+                    <tr>
+                        <th>Réferent</th>
+                        <td>{{ collecte.referent.nom  | capitalize}} {{ collecte.referent.prenom  | capitalize}}</td>
+                    </tr>
+                    <tr>
+                        <th>Nombre de place</th>
+                        <td>{{ collecte.nombreDePlace }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+                <!------liste participants--->
+            <div class="liste_collecte_participant">
+                <div>
+                    <h4 class="text-center">Liste des participants inscrits</h4>
+                    <table class="table table-striped table-light table-bordered table-hover">
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        {% for inscrit in collecte.inscriptionCollectes %}
+                            <tr>
+                                <td><a href="{{ path('profilUsers',{'id': inscrit.user.id}) }}">
+                                        {{ inscrit.user.nom | capitalize}}</a></td>
+                                <td><a href="{{ path('profilUsers',{'id': inscrit.user.id}) }}">
+                                        {{ inscrit.user.prenom }}  </a></td></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                <div class="conponent_button_retour_collecte">
+                    <button class="button_retour_afficherCollecte">
+                        <a href="{{ path ("collecte_liste") }}" class="">Retour</a>
+                    </button>
+                </div>
+
+                </div>
+
+        </div>
+    </div>
+
+
+
+{% endblock %}

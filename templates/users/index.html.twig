@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateurs{% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success text-center" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('warning') %}
+        <div class="alert alert-warning text-center" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('danger') %}
+        <div class="alert alert-danger text-center" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="component_gestion">
+        <div id="component_gestion_utilisateur" class="container">
+            <h3 class="text-center">Les utilisateurs</h3>
+            <div class="table-responsive">
+            <table class=" shadow-lg p-3 mb-5 bg-white rounded container-full  table table-striped table-light table-bordered table-hover ">
+                <thead>
+                <tr class="primary">
+                    <th scope="col">Id</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prenom</th>
+                    <th scope="col">Telephone</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Actions</th>
+                    <!--- <th>Administrateur</th>
+                     <th>Actif</th>
+                     <th>Roles</th>
+                     <th>Activation_token</th>
+                     <th>Reset_token</th>
+                     <th>IsVerified</th>
+                     <th>actions</th> --->
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.nom }}</td>
+                        <td>{{ user.prenom }}</td>
+                        <td>{{ user.telephone }}</td>
+                        <td>{{ user.email }}</td>
+                        <!-- <td>{{ user.password }}</td>
+                    <td>{{ user.administrateur ? 'Yes' : 'No' }}</td>
+                    <td>{{ user.actif ? 'Yes' : 'No' }}</td>
+                    <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                    <td>{{ user.activationToken }}</td>
+                    <td>{{ user.resetToken }}</td>
+                    <td>{{ user.isVerified ? 'Yes' : 'No' }}</td> --->
+                        <td>
+                            <a href="{{ path('users_edit', {'id': user.id}) }}" class="fas fa-edit text-decoration-none" title="afficher"  ></a>
+                            <!--
+                            <button type="button" class="btn btn-primary">
+                                <a href="{{ path('users_edit', {'id': user.id}) }}" class="text-white bg-dar text-decoration-none">Modifier</a>
+                            </button>
+                            --->
+                            <a href="{{ path('users_show', {'id': user.id}) }}" class="fas fa-eye text-decoration-none" title="afficher"  ></a>
+                            <!--
+                            <button type="button" class="btn btn-info">
+                                <a href="{{ path('users_show', {'id': user.id}) }}" class="text-white bg-dar text-decoration-none">Afficher</a>
+                            </button>
+                              --->
+
+
+                                <form method="post" action="{{ path('users_delete', {'id': user.id}) }}" id="supprimer"
+                                      onsubmit="return confirm('Êtes-vous sûr de bien vouloir supprimer cet élément?');">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+                                    <button class="fas fa-trash-alt " title="supprimer" ></button>
+                                </form>
+
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="13">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            </div>
+            <div class="text-center" id="ajouter_utilisateur">
+                <a href="{{ path('users_new') }}"> <button class="btn-success">Ajouter un utilisateur</button></a>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

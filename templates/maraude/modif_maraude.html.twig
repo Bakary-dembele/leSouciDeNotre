@@ -1,0 +1,121 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% form_theme modifForm 'bootstrap_4_layout.html.twig' %}
+          <div class="conponent_modifier_maraude">
+              <div class="container">
+                  <h1 class="m-3 text-center">Modifier une maraude</h1> <br>
+                  <div class="row">
+                      <div class="col-sm-6">
+                          {{ form_start(modifForm) }}
+                          {{ form_row(modifForm.nom) }}
+                          {{ form_row(modifForm.dateDebut) }}
+                          {{ form_row(modifForm.dateCloture) }}
+                          {{ form_row(modifForm.nbInscriptionsMax) }}
+                          {{ form_row(modifForm.duree) }}
+                          {{ form_row(modifForm.descriptionInfos) }}
+                      </div>
+                      <div class="col-sm-6">
+                          {{ form_row(modifForm.groupe) }}
+                          {{ form_row(modifForm.ville) }}
+                          {{ form_row(modifForm.lieu) }}
+                          {{ form_row(modifForm.Rue) }}
+                          {{ form_row(modifForm.code_postal) }}
+                          {{ form_row(modifForm.latitude) }}
+                          {{ form_row(modifForm.longitude) }}
+                      </div>
+                  </div>
+                  <div class="row col-sm-10 offset-sm-1 mt-3 d-flex">
+                      <div class="col">
+                          <a href="{{ path('maraude_modif',{'id': maraude.id}) }}">
+                              <button id="buton_enregistrer_modif" type="submit" class="my-3 ml-3" formnovalidate>Enregistrer</button></a>
+                          {{ form_end(modifForm) }}
+                      </div>
+                      <div class="col">
+                          <form method="post" action="{{ path('maraude_publier',{'id': maraude.id}) }}">
+                              <a href="{{ path('maraude_publier',{'id': maraude.id}) }}">
+                                  <button id="buton_maraude_publier" type="submit" class="my-3" formnovalidate>Publier</button></a>
+                          </form>
+                      </div>
+                      <div class="col">
+                          <form method="post" action="{{ path('maraude_suppression',{'id': maraude.id}) }}"
+                                onsubmit="return confirm('Êtes vous sûr(e) de vouloir supprimer la maraude ?')">
+                              <input type="hidden" name="_method" value="DELETE">
+                              <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ maraude.id) }}">
+                              <a href="{{ path('maraude_suppression',{'id': maraude.id}) }}" class="text-decoration-none">
+                                  <button id="buton_maraude_supprimer" class="my-3 ml-3" type="submit" formnovalidate>Supprimer</button></a>
+                          </form>
+                      </div>
+                      <div class="col">
+                          <form method="post">
+                                  <button id="buton_maraude_retour" type="submit" class="my-3" formnovalidate>
+                                      <a href="{{ path('maraude_planning') }}">Retour</a></button>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+    <!---------------------------------------js filtre---------------------------------->
+    <script>
+        var $ville = $('#modif_maraude_ville');
+        $ville.change(function(){
+            $.ajax({
+                url: "{{ path('maraude_liste_lieux') }}",
+                type: "GET",
+                dataType: "JSON",
+                data: {
+                    "villeId": $ville.val(),
+                },
+                success: function(lieux) {
+
+                    var lieuSelect = $('#modif_maraude_lieu');
+                    lieuSelect.html('');
+                    lieuSelect.append('<option value> Choisissez un lieu de '
+                        + $ville.find("option:selected").text()
+                        + ' ...</option>');
+                    $.each(lieux, function(key, lieu){
+                        lieuSelect.append('<option value="' + lieu.id + '">' + lieu.name + '</option>');
+                        var cdpSelect = $('#modif_maraude_code_postal');
+                        cdpSelect.html('');
+                        cdpSelect.val(this.cdp);
+                        console.log(this);
+                    });
+                },
+                error: function(err){
+                    alert("Une erreur s'est produite en chargeant les données...");
+                }
+            });
+        });
+
+        var $lieu = $('#modif_maraude_lieu');
+        $lieu.change(function(){
+            $.ajax({
+                url: "{{ path('maraude_lieu_details') }}",
+                type: "GET",
+                dataType: "JSON",
+                data: {
+                    "lieuId": $lieu.val()
+                },
+                success: function(retourArray) {
+                    $.each(retourArray, function(key, valeur){
+                        var rueSelect = $('#modif_maraude_Rue');
+                        rueSelect.html('');
+                        rueSelect.val(valeur.rue);
+                        var latitudeSelect = $('#modif_maraude_latitude');
+                        latitudeSelect.html('');
+                        latitudeSelect.val(valeur.latitude);
+                        var longitudeSelect = $('#modif_maraude_longitude');
+                        longitudeSelect.html('');
+                        longitudeSelect.val(valeur.longitude);
+                    });
+                },
+                error: function(err){
+                    alert("Une erreur s'est produite en chargeant les données...");
+                }
+            });
+        });
+    </script>
+
+{% endblock %}
+

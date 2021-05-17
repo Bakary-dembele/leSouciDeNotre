@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier utilisateurs{% endblock %}
+
+{% block body %}
+
+    <div id="component_creerModifierEnvenement">
+        <div class="container w-50">
+            <div class="col">
+                <h1 class="text-center">Modifier un utilisateur</h1> <br>
+                <strong>
+                    {{ form_start(form) }}
+                        {{ form_row(form.nom) }}
+                        {{ form_row(form.prenom) }}
+                        {{ form_row(form.telephone) }}
+                        {{ form_row(form.email) }}
+                        {{ form_row(form.password) }}
+                        {{ form_row(form.groupe) }}
+                        {{ form_row(form.roles) }}
+                    <div class="d-flex justify-content-center">
+                        <div class="">
+                            <a {{ path('users_index') }}">
+                            <button type="submit" class="btn btn-success " formnovalidate>Enregistrer</button>
+                            </a>
+                            {{ form_end(form) }}
+                        </div>
+                        <div class="">
+                            <a {{ path('users_index') }}">
+                            <button type="submit" class="btn btn-danger " formnovalidate>Retour</button>
+                            </a>
+                        </div>
+                    </div>
+                </strong>
+            </div>
+            <div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

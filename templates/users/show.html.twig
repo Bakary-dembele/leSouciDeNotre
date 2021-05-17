@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateur{% endblock %}
+
+{% block body %}
+<div class="afficher_collecte">
+    <div class="container">
+        <h3 class="text-center my-4">Afficher un utilisateur</h3>
+        <div class="row col-sm-10 offset-sm-1">
+            <table class="table table-light table-hover shadow-lg p-3 mb-5 bg-white rounded">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ user.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ user.nom }}</td>
+                    </tr>
+                    <tr>
+                        <th>Prenom</th>
+                        <td>{{ user.prenom }}</td>
+                    </tr>
+                    <tr>
+                        <th>Telephone</th>
+                        <td>{{ user.telephone }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{ user.email }}</td>
+                    </tr>
+                    <tr>
+                        <th>Roles</th>
+                        <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="conponent_button_retour_collecte text-center">
+            <button class="button_retour_afficherCollecte">
+                <a href="{{ path ("users_index") }}" class="">Retour</a>
+            </button>
+        </div>
+    </div>
+    </div>
+
+
+{% endblock %}

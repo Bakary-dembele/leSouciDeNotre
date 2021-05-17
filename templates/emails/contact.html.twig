@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <table cellpadding="0" cellspacing="0" width="100%" border="0" style="...">
+        <tr>
+            <th style="...">Nom</th>
+            <td>{{ contact.nom }}</td>
+        </tr>
+        <tr>
+            <th style="...">Prénom</th>
+            <td>{{ contact.prenom }}</td>
+        </tr>
+        <tr>
+            <th style="...">Email</th>
+            <td>{{ contact.email }}</td>
+        </tr>
+        <tr>
+            <th style="...">Message</th>
+            <td>{{ contact.message | nl2br }}</td>
+        </tr>
+    </table>
+{% endblock %}

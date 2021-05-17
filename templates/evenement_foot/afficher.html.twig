@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Evenement Foot{% endblock %}
+
+{% block body %}
+ {% if is_granted('ROLE_ADMIN') %}
+<div id="component_afficherEnvenement">
+    <div class="afficherEnvenement">
+        <h1>Afficher l'événément foot</h1>
+        <div class="table-responsive">
+    <table class="table table-striped table-light table-bordered table-hover">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ evenement_foot.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ evenement_foot.titre }}</td>
+            </tr>
+            <tr>
+                <th>Descriptif</th>
+                <td>{{ evenement_foot.descriptif }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ evenement_foot.prix }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ evenement_foot.date ? evenement_foot.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ evenement_foot.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Details</th>
+                <td>{{ evenement_foot.details }}</td>
+            </tr>
+            <tr>
+                <th>HeureDebut</th>
+                <td>{{ evenement_foot.heureDebut ? evenement_foot.heureDebut|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>HeureFin</th>
+                <td>{{ evenement_foot.heureFin ? evenement_foot.heureFin|date('H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+        <button class="button_retourAfficherEnvenement">
+            <a href="{{ path('evenement_foot_liste') }}">Retour</a>
+        </button>
+    </div>
+</div>
+ {% endif %}
+{% endblock %}

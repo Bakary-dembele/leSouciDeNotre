@@ -1,0 +1,36 @@
+
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription évenement {% endblock %}
+
+{% form_theme inscrireForm 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+
+  <div id="envenement_inscriptionBrunch">
+      <div class="containe_">
+            <h2 class="text-center">Veuillez vous inscrire à l'événement brunch</h2>
+            <div class="col">
+                <strong>
+                    {{ form_start(inscrireForm) }}
+                        {{ form_row(inscrireForm.nom) }}
+                        {{ form_row(inscrireForm.prenom) }}
+                       {{ form_row(inscrireForm.telephone) }}
+                        {{ form_row(inscrireForm.email) }}
+                    <button  type="submit" formnovalidate>Valider</button>
+                    {{ form_end(inscrireForm) }}
+                </strong>
+            </div>
+          {% if is_granted('ROLE_ADMIN') %}
+              <div class="text-center" id="button-creerAfficher">
+                  <button>
+                      <a href="{{ path('inscription_liste_envenement') }} ">Afficher la liste des participants</a>
+                  </button>
+              </div>
+          {% endif%}
+        </div>
+  </div>
+
+
+{% endblock %}

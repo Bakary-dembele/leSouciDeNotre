@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% form_theme maraudeForm 'bootstrap_4_layout.html.twig' %}
+    <div class="creer_maraude">
+        <div class="container">
+            <h1 class="m-3 text-center m-4" >Créer une Maraude</h1> <br>
+            <div class="row">
+                <div class="col-sm-6">
+                    <strong>
+                        {{ form_start(maraudeForm) }}
+                        {{ form_row(maraudeForm.nom) }}
+                        {{ form_row(maraudeForm.dateDebut) }}
+                        {{ form_row(maraudeForm.dateCloture) }}
+                        {{ form_row(maraudeForm.nbInscriptionsMax) }}
+                        {{ form_row(maraudeForm.duree) }}
+                        {{ form_row(maraudeForm.descriptionInfos) }}
+                    </strong>
+                </div>
+                <div class="col-sm-6">
+                    <strong>
+                        {{ form_row(maraudeForm.groupe) }}
+                        {{ form_row(maraudeForm.ville) }}
+                        {{ form_row(maraudeForm.lieu) }}
+                        {{ form_row(maraudeForm.Rue) }}
+                        {{ form_row(maraudeForm.Code_postal) }}
+                        {{ form_row(maraudeForm.latitude) }}
+                        {{ form_row(maraudeForm.longitude) }}
+                    </strong>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <div class="">
+                    <a href="{{ path('maraude_planning') }}">
+                        <button type="submit" class="btn btn-success " formnovalidate>Enregistrer</button>
+                    </a>
+                    {{ form_end(maraudeForm) }}
+                </div>
+                <div class="">
+                    <a href="{{ path('maraude_planning') }}" class="btn btn-danger ">Annuler</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        var $ville = $('#creation_maraude_ville');
+        $ville.change(function(){
+            $.ajax({
+                url: "{{ path('maraude_liste_lieux') }}",
+                type: "GET",
+                dataType: "JSON",
+                data: {
+                    "villeId": $ville.val(),
+                },
+                success: function(lieux) {
+
+                    var lieuSelect = $('#creation_maraude_lieu');
+                    lieuSelect.html('');
+                    lieuSelect.append('<option value> Choisissez un lieu de '
+                        + $ville.find("option:selected").text()
+                        + ' ...</option>');
+                    $.each(lieux, function(key, lieu){
+                        lieuSelect.append('<option value="' + lieu.id + '">' + lieu.name + '</option>');
+                        var cdpSelect = $('#creation_maraude_code_postal');
+                        cdpSelect.html('');
+                        cdpSelect.val(this.cdp);
+                        console.log(this);
+                    });
+                },
+                error: function(err){
+                    alert("Une erreur s'est produite en chargeant les données...");
+                }
+            });
+        });
+
+        var $lieu = $('#creation_maraude_lieu');
+        $lieu.change(function(){
+            $.ajax({
+                url: "{{ path('maraude_lieu_details') }}",
+                type: "GET",
+                dataType: "JSON",
+                data: {
+                    "lieuId": $lieu.val()
+                },
+                success: function(retourArray) {
+                    $.each(retourArray, function(key, valeur){
+                        var rueSelect = $('#creation_maraude_Rue');
+                        rueSelect.html('');
+                        rueSelect.val(valeur.rue);
+                        var latitudeSelect = $('#creation_maraude_latitude');
+                        latitudeSelect.html('');
+                        latitudeSelect.val(valeur.latitude);
+                        var longitudeSelect = $('#creation_maraude_longitude');
+                        longitudeSelect.html('');
+                        longitudeSelect.val(valeur.longitude);
+                    });
+                },
+                error: function(err){
+                    alert("Une erreur s'est produite en chargeant les données...");
+                }
+            });
+        });
+    </script>
+
+    <br>
+    <br>
+{% endblock %}

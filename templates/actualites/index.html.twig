@@ -1,0 +1,145 @@
+
+
+
+{% extends 'base.html.twig' %}
+
+{% block title %}actualités{% endblock %}
+
+{% block body %}
+
+    <div class="sliderNews">
+        <button type="button" class="btn btn-danger btn-circle btn-xl"><a class="text-decoration-none" href="{{ path('faire_don')}}">FAIRE UN DOM</a></button>
+        <div class="slidesNews">
+            <div class="slideNews">
+            </div>
+            <div class="slideNews">
+            </div>
+            <!--   <div class="slideNew">
+                   <div class="slideNew-data">
+                       <h1>This is Slide # 3</h1>
+                       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit veniam fuga voluptatem voluptas illum deserunt soluta quasi ipsam quam qui eligendi autem laudantium inventore, voluptatibus blanditiis nobis, tempora architecto atque.</p>
+                       <button>SHARE</button>
+                   </div>
+               </div>-->
+        </div>
+        <!---
+              <button class="arrows prev" onclick="plusslides(-1)">
+                  <span><i class="fas fa-angle-left"></i></span>
+              </button>
+              <button class="arrows next" onclick="plusslides(1)">
+                  <span><i class="fas fa-angle-right"></i></span>
+              </button> ---->
+
+        <div class="dots">
+            <span onclick="currentslide(1)"></span>
+            <span onclick="currentslide(2)"></span>
+        </div>
+    </div>
+
+
+
+
+    <div id="actualite">
+    <div class="titre_galerie">
+        <h4 class="text-center text-white">ACTUALITÉS</h4>
+        <p>
+            Pour retrouver l’actualité sociale et solidaire du Souci de Nôtre, partout en France et dans le monde. <br>
+            Un éclairage apporté par les personnels et bénévoles de l’association nationale, des comités,  <br>
+            des antennes et par l’équipe. Des articles, l’agenda des actions et projets en cours.
+        </p>
+
+    </div>
+    <div id="boite" class="">
+      <!--  <div class="center2">-->
+        <div class="row">
+            <div class="imgbox ">
+                <img src="{{ asset('img/actualite/afrique.jpeg') }}" alt="afrique">
+                <div class="containe">
+                    <div class="content">
+                        <h1>Actualité en Afrique</h1>
+                        <p>
+                            Retrouvez les actualités de nos bénéficaires mais aussi notre
+                            point de vue et expertise sur des questions realatives à la proction
+                             et l'éducation des enfants en Afrique
+                        </p>
+                    </div>
+                    <div class="title">
+                        <h5>AFRICA</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="imgbox ">
+                <img src="{{ asset('img/actualite/ancien.jpeg') }}" alt="asia">
+                <div class="containe">
+                    <div class="content">
+                        <h1>Actualité en Asie</h1>
+                        <p>
+                            Retrouvez les actualités de nos bénéficaires mais aussi notre
+                            point de vue et expertise sur des questions realatives à la proction
+                            et l'éducation des enfants en Asie
+                        </p>
+                    </div>
+                    <div class="title">
+                        <h5>ASIA</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="imgbox ">
+                <img src="{{ asset('img/actualite/autralie.jpeg') }}" alt="autralia">
+                <div class="containe">
+                    <div class="content">
+                        <h1>Actualité en Australie</h1>
+                        <p>
+                            Retrouvez les actualités de nos bénéficaires mais aussi notre
+                            point de vue et expertise sur des questions realatives à la proction
+                            et l'éducation des enfants en Autralie
+                        </p>
+                    </div>
+                    <div class="title">
+                        <h5>AUSTRALIA</h5>
+                    </div>
+                </div>
+            </div>
+            <!--   </div>--->
+
+        </div>
+        </div>
+</div>
+
+
+
+    <!-------------------section chiffre------------------>
+    <div class="section_chiffre">
+        <div class="text-center" >
+            <h2>NOS STATISTICS</h2>
+            <p>
+                Rétrouvez quelques chiffres de nos projets réalisés
+            </p>
+        </div>
+        <div class="counter-up">
+            <div class="content_counter">
+                <div class="box-counter">
+                    <div class="icon"><i class="fas fa-project-diagram"></i></div>
+                    <div class="counter1">14+</div>
+                    <div class="text-counter">Projets</div>
+                </div>
+                <div class="box-counter">
+                    <div class="icon"><i class="fas fa-user-friends"></i></div>
+                    <div class="counter2">200+</div>
+                    <div class="text-counter">Membres</div>
+                </div>
+                <div class="box-counter">
+                    <div class="icon"><i class="fas fa-users"></i></div>
+                    <div class="counter3">1.000+</div>
+                    <div class="text-counter">Community</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-----scrip------------->
+    <script src="{{ asset('js/slider_home.js') }}"></script>
+
+
+{% endblock %}

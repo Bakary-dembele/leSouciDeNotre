@@ -1,0 +1,222 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Activite{% endblock %}
+
+{% block body %}
+
+    <div class="sliderNews">
+        <button type="button" class="btn btn-danger btn-circle btn-xl"><a class="text-decoration-none" href="{{ path('faire_don')}}">FAIRE UN DOM</a></button>
+        <div class="slidesNews">
+            <div class="slideNews">
+            </div>
+            <div class="slideNews">
+            </div>
+            <!--   <div class="slideNew">
+                   <div class="slideNew-data">
+                       <h1>This is Slide # 3</h1>
+                       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit veniam fuga voluptatem voluptas illum deserunt soluta quasi ipsam quam qui eligendi autem laudantium inventore, voluptatibus blanditiis nobis, tempora architecto atque.</p>
+                       <button>SHARE</button>
+                   </div>
+               </div>-->
+        </div>
+        <!---
+              <button class="arrows prev" onclick="plusslides(-1)">
+                  <span><i class="fas fa-angle-left"></i></span>
+              </button>
+              <button class="arrows next" onclick="plusslides(1)">
+                  <span><i class="fas fa-angle-right"></i></span>
+              </button> ---->
+
+        <div class="dots">
+            <span onclick="currentslide(1)"></span>
+            <span onclick="currentslide(2)"></span>
+        </div>
+    </div>
+
+
+
+
+    <div id="component-activite">
+        <!-------------section titre avec texte--->
+        <div class="text-center" id="titre_activites">
+            <h2>ACTIVITÉS</h2>
+            <P>
+                Retrouvez toute l'activités de l'association !
+            </P>
+        </div>
+
+        <div class="box_parent container-fluid">
+            <!--------------------les cards------------------>
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-">
+                    <div class="box_action">
+                        <img src="{{ asset('img/activite/pole_maraude1.jpg') }}" alt="image_alimentaire">
+                        <h4>Pôle Maraude</h4>
+                        <p>
+                            Nous sillonnons des ville de nuit, pour
+                            aller à la rencontre des personnes précaires et sans abri et
+                            leur proposer l’aide de première nécessité : boire, manger,
+                            se couvrir et si elles l’acceptent, avoir un toit pour la nuit.
+                            Les maraudes n’ont pas pour mission de jouer les révolutionnaires
+                            de la société mais qu’au contraire, elles forcent à l’humilité.
+                            Etre de maraude, c’est accepter d’apporter un coup de pouce
+                            affectif et matériel à des personnes au mieux précaires.
+
+                        </p>
+                        <a href="javascript:void();" class="lire-btn">Lire la suite</a>
+                    </div>
+                </div>
+            <!--------------------les cards------------------>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-">
+                    <div class="box_action">
+                        <img src="{{ asset('img/activite/maraude1.jpg') }}" alt="image_alimentaire">
+                        <h4>Pôle Maraude</h4>
+                        <p>
+                            Les équipes de maraude de souci de nôtre se rendent au-devant
+                            des personnes de la rue afin de leur offrir un lien social et une aide
+                            de première nécessité (soupe, boisson chaude, produits d’hygiène, duvet).
+                            Les équipes peuvent également transporter les personnes sans abri vers
+                            une structure d’hébergement lorsque cela est possible.
+                        </p>
+                        <a href="javascript:void();" class="lire-btn">Lire la suite</a>
+                    </div>
+                </div>
+
+            <!--------------------les cards------------------>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-">
+                    <div class="box_action">
+                        <img src="{{ asset('img/activite/maraude70.jpg') }}" alt="image_alimentaire">
+                        <h4>Pôle Maraude</h4>
+                        <p>
+                            Le souci de nôtre effectue des maraudes à pied dans
+                            le centre des grandes villes. Ces maraudes ont pour objectif
+                            d’apporter un lien social et une aide de première nécessité.
+                            Le souci de ôtre organise également des maraudes
+                            pédestres afin de compléter le dispositif de point fixe et d’aller
+                            au-devant des personnes ne souhaitant pas ou ne pouvant
+                            pas se rendre sur le lieu du petit déjeuner.
+                        </p>
+                        <a href="javascript:void();" class="lire-btn">Lire la suite</a>
+                    </div>
+                </div>
+
+        </div>
+        </div>
+
+        <div class="box_parent container-fluid">
+            <!--------------------les cards------------------>
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-">
+                    <div class="box_action">
+                        <img src="{{ asset('img/activite/collecte1.jpg') }}" alt="image_alimentaire">
+                        <h4>Pôle collecte</h4>
+                        <p>
+                            Le souci de nôtre rencontre aujourd’hui des difficultés financières et avons
+                            du mal à mener à bien les objectifs fixés par notre association. C’est pourquoi
+                            nous nous adressons à vous et comptons sur votre générosité pour nous soutenir
+                            dans la réalisation de nos projets à destination des sans abris, des orphelins
+                            à l'étranger. Des dons alimentaires sur vos surplus ou invendus, ou bien une
+                            participation financière ou matérielle, nous aiderait à continuer l’action pour
+                            laquelle nous nous battons depuis tant d’années.
+                        </p>
+                        <a href="javascript:void();" class="lire-btn">Lire la suite</a>
+                    </div>
+                </div>
+                <!--------------------les cards------------------>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-">
+                    <div class="box_action">
+                        <img src="{{ asset('img/activite/collecte6.jpg') }}" alt="image_alimentaire">
+                        <h4>Pôle collecte</h4>
+                        <p>
+                            Le souci de nôtre œuvre depuis 2018 en faveur des sans abris, des orphelins.
+                           Nous envisageons d'envoyer des matériels médicales, des fournitures scolaires, des
+                            vêtements à l'étranger. Ce qui va permettre de scoloriser et soigner des orphelins.
+                            Or, notre association est actuellement confrontée à des difficultés financières
+                            qui l’empêchent de mener à bien cette mission. Ainsi, nous recherchons aujourd’hui
+                            des généreux donateurs qui voudraient bien nous offrir leurs aides. Comme vous
+                            partagez exactement les mêmes valeurs que ceux de notre association, nous n’avons
+                            pas hésité de vous faire part de notre soucis.
+                        </p>
+                        <a href="javascript:void();" class="lire-btn">Lire la suite</a>
+                    </div>
+                </div>
+                <!--------------------les cards------------------>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-">
+                    <div class="box_action">
+                        <img src="{{ asset('img/activite/visite1.jpg') }}" alt="image_alimentaire">
+                        <h4>Pôle Visite</h4>
+                        <p>
+                            Le pôle visite a pour mission d’assurer la visibilité
+                            de l’association auprès d’un large public, mais aussi d’entretenir
+                            le contact avec son public. Pour cela le souci de nôtre organiser
+                            chaque année une journée pour distribuer des cadeaux aux enfants
+
+                        </p>
+                        <a href="javascript:void();" class="lire-btn">Lire la suite</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box_parent container-fluid">
+            <!--------------------les cards------------------>
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-">
+                    <div class="box_action">
+                        <img src="{{ asset('img/activite/pole social.jpg') }}" alt="image_alimentaire">
+                        <h4>Pôle Social</h4>
+                        <p>
+                            Le pôle social de l’association est chargé de veiller à
+                            la bonne application et à la coordination des décisions
+                            et stratégies discutées lors des conseils d’administration
+                            ou des assemblées générales. Il est le garant des actes de
+                            l’association et de son bon fonctionnement.
+                        </p>
+                        <a href="javascript:void();" class="lire-btn">Lire la suite</a>
+                    </div>
+                </div>
+                <!--------------------les cards------------------>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-">
+                    <div class="box_action">
+                        <img src="{{ asset('img/activite/jeunesse1.jpg') }}" alt="image_alimentaire">
+                        <h4>Pôle Jeunesse</h4>
+                        <p>
+                            Le pôle jeunesse de souci de nôtre est un service chargé de la mise
+                            en œuvre opérationnelle des maraudes et collectes par les jeunesses
+                            cette mission permet de sensibliser ces derniers des précarité
+                            des sans abris et les pauvres.
+                        </p>
+                        <a href="javascript:void();" class="lire-btn">Lire la suite</a>
+                    </div>
+                </div>
+                <!--------------------les cards------------------>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-">
+                    <div class="box_action">
+                        <img src="{{ asset('img/activite/pole_jeunesse.jpg') }}" alt="image_alimentaire">
+                        <h4>Pôle Jeunesse</h4>
+                        <p>Grâce à vos dons reçus dans le cadre de notre campagne "1euro"="1repas", nous
+                            avons pu nous rendre dans cinq pays,
+                        </p>
+                        <a href="javascript:void();" class="lire-btn">Lire la suite</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-----scrip slider------------->
+    <script src="{{ asset('js/slider_home.js') }}"></script>
+
+
+    <!-----scrip images lire la suite------------->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(".lire-btn").on('click', function (){
+          $(this).parent().toggleClass("showContent");
+
+          //shorthand if.else statement
+          var replaceText = $(this).parent().hasClass("showContent") ? "Lire moins" : "Lire la suite";
+          $(this).text(replaceText)
+        })
+    </script>
+
+{% endblock %}

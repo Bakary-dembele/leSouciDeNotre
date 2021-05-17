@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Evenement foot {% endblock %}
+
+{% block body %}
+
+    {# message flash #}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success text-center" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('warning') %}
+        <div class="alert alert-warning text-center" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('danger') %}
+        <div class="alert alert-danger text-center" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+        <!-------------------envenement foot---------------------------->
+    {% if is_granted('ROLE_ADMIN') %}
+        <div id="listeEnvenementFoot">
+            <div class="container">
+                <div id="titre-liste-foot">
+                    <h1 class="text-center">liste foot</h1>
+                </div>
+                <div class="table-responsive">
+                <table class="table table-striped table-light table-bordered table-hover">
+                    <thead>
+                    <tr class="primary">
+                        <th>Id</th>
+                        <th>Titre</th>
+                        <th>Descriptif</th>
+                        <th>Prix</th>
+                        <th>Date</th>
+                        <th>Heure/début</th>
+                        <th>Heure/fin</th>
+                        <th>Adresse</th>
+                        <th>Détail</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for evenement_foots in evenement_foot %}
+                        <tr>
+                            <td>{{ evenement_foots.id }}</td>
+                            <td>{{ evenement_foots.titre }}</td>
+                            <td>{{ evenement_foots.descriptif }}</td>
+                            <td>{{ evenement_foots.prix }}</td>
+                            <td>{{ evenement_foots.date ? evenement_foots.date|date('Y-m-d')  }}</td>
+                            <td>{{ evenement_foots.heureDebut| date('H:i:s')}}</td>
+                            <td>{{ evenement_foots.heureFin | date('H:i:s') }}</td>
+                            <td>{{ evenement_foots.adresse }}</td>
+                            <td>{{ evenement_foots.details }}</td>
+                            <td>
+                                <a href="{{ path('evenement_foot_modifier', {'id': evenement_foots.id}) }}"  class="fas fa-edit text-decoration-none" title="modifier" ></a>
+                                <!--
+                                <button type="button" class="btn btn-primary text-decoration-none">
+                                    <a href="{{ path('evenement_foot_modifier', {'id': evenement_foots.id}) }}" class="text-decoration-none">Modifier</a>
+                                </button>
+                                -->
+                                <a href="{{ path('evenement_foot_afficher', {'id': evenement_foots.id})  }}" class="fas fa-eye text-decoration-none" title="afficher" ></a>
+                                <!--
+                                <button type="button" class="btn btn-info text-decoration-none text-white">
+                                    <a href="{{ path('evenement_foot_afficher', {'id': evenement_foots.id})  }}" class="text-decoration-none">Afficher</a>
+                                </button>
+                                --->
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6">Aucun enregistrement trouvé</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+
+                <div  id="button_creer_Evenement_foot_annuler">
+                       <div class="button_creer_evenement_foot">
+                           <button><a href="{{ path('evenement_foot_creer') }} ">Créer un événement</a></button>
+                       </div>
+                      <div class="button_annuler_evenement_foot">
+                          <button class="button_annuler_envenement_foot" formnovalidate><a href="{{ path('main_evenement') }}">Annuler</a></button>
+                      </div>
+                </div>
+
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,241 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme maraudeSearchForm 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+
+
+    {# message flash #}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success text-center" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('warning') %}
+        <div class="alert alert-warning text-center" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('danger') %}
+        <div class="alert alert-danger text-center" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="sliderNews">
+        <button type="button" class="btn btn-danger btn-circle btn-xl"><a class="text-decoration-none" href="{{ path('faire_don')}}">FAIRE UN DOM</a></button>
+        <div class="slidesNews">
+            <div class="slideNews">
+            </div>
+            <div class="slideNews">
+            </div>
+
+            <!--   <div class="slideNew">
+                   <div class="slideNew-data">
+                       <h1>This is Slide # 3</h1>
+                       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit veniam fuga voluptatem voluptas illum deserunt soluta quasi ipsam quam qui eligendi autem laudantium inventore, voluptatibus blanditiis nobis, tempora architecto atque.</p>
+                       <button>SHARE</button>
+                   </div>
+               </div>-->
+        </div>
+        <!---
+              <button class="arrows prev" onclick="plusslides(-1)">
+                  <span><i class="fas fa-angle-left"></i></span>
+              </button>
+              <button class="arrows next" onclick="plusslides(1)">
+                  <span><i class="fas fa-angle-right"></i></span>
+              </button> ---->
+
+        <div class="dots">
+            <span onclick="currentslide(1)"></span>
+            <span onclick="currentslide(2)"></span>
+        </div>
+    </div>
+
+
+    <!--------evenement titre------>
+    <div id="containe_collecte">
+        <div class="text-center" id="titre_collecet">
+            <h2>ACTION MARAUDE</h2>
+        </div>
+
+        <div id="component_collecte">
+            <!----slider collecte---------->
+            <div class="container_collecte">
+                <div class="slides">
+                    <div class="slide">
+                        <img src="{{asset('img/maraude/maurade34.jpg')}}" alt="">
+                    </div>
+                    <div class="slide">
+                        <div class="slide">
+                            <img src="{{asset('img/boy-1139042_1280.jpg')}}" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide-controls">
+                    <button id="prev-btn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button id="next-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!----texte------>
+            <div>
+                <p>
+                    La mission principale de Souci de nôtre est d’aider les plus démunis, sans critère <br>
+                    de distinctions, par le biais d’actions solidaires, humanitaires ou sociales, <br>
+                    en France ou à l’étranger à travers des maraudes, distributions et collectes <br>
+                    alimentaires auprès de petites ou grandes surfaces, distributions de colis, <br>
+                    aide aux orphelinats à l’étranger (envoi de médicaments, équipements sportifs, <br>
+                    fournitures scolaires...), financement de construction de puits à l’étranger, <br>
+                    organisation d’événements sportifs et rencontres pour financer des actions précises.
+
+                </p>
+                <p>
+                    Le souci de nôtre s’engage à contribuer à la construction d’un monde dans lequel <br>
+                    chaque être humain peut vivre et s’épanouir dignement. Son objectif principal est <br>
+                    d’améliorer de manière durable les conditions d’existence et le développement des <br>
+                    populations les plus défavorisées en France et dans le Monde.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    {% if is_granted('ROLE_USER') %}
+            <!--------------------------------Affichage plannig maraude---------------------------->
+            <div class="conponent_maraude">
+                <div class="container-fluid">
+                        <div class="col-sm-3 offset-sm-9 text-right">
+                            <p> <strong>Date du jour :</strong>  {{ "now" | date('d/m/Y') }}</p>
+                            <p> <strong>Participant :</strong> {{ app.user.nom | capitalize }} {{ app.user.prenom | capitalize }}</p>
+                        </div>
+
+                 <h3 class="text-left">Filtrer les maraudes</h3>
+                <div class="row my-3">
+                    <div class="col-sm-6">
+                        {{ form_start(maraudeSearchForm) }}
+                        {{ form_row(maraudeSearchForm.nomGroupe) }}
+                        {{ form_row(maraudeSearchForm.motCle) }}
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{ form_row(maraudeSearchForm.dateDebutSearch, {'attr': {'class': 'bootstrap-class'}}) }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ form_row(maraudeSearchForm.dateFinSearch) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 mt-4 pl-3">
+                        {{ form_row(maraudeSearchForm.maraudeOrganisateur) }}
+                        {{ form_row(maraudeSearchForm.maraudeInscrit) }}
+                        {{ form_row(maraudeSearchForm.maraudeNonInscrit) }}
+                        {{ form_row(maraudeSearchForm.maraudePassees) }}
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="submit" class="button_recherche">Rechercher</button>
+                    </div>
+                    {{ form_end(maraudeSearchForm) }}
+                </div>
+                {% endif %}
+                {% if is_granted('ROLE_USER') %}
+                    <div class="table-responsive">
+                    <table class="table table-striped table-light table-bordered table-hover">
+                           <thead class="primary text-white">
+                               <th scope="col" >Nom de la maraude</th>
+                               <th scope="col">Date de la maraude</th>
+                               <th scope="col">Clôture</th>
+                               <th scope="col">inscrits/places</th>
+                               <th scope="col">Etat</th>
+                               <th scope="col">Inscrit(e)</th>
+                               <th scope="col">Organisateur/trice</th>
+                               <th scope="col">Actions</th>
+                           </thead>
+
+                            {% endif %}
+                            {% for maraude in maraudes %}
+                                {% if is_granted('ROLE_USER') %}
+                                    <tr>
+                                        <td>{{ maraude.nom }}</td>
+                                        <td>{{ maraude.dateDebut | date('d/m/Y H:i') }}</td>
+                                        <td>{{ maraude.dateCloture | date('d/m/Y H:i') }}</td>
+                                        <td>{{ maraude.inscriptions.count | default('0')}}/{{ maraude.nbInscriptionsMax }}</td>
+                                        <td>{{ maraude.etat.libelle | default('pas défini') }}</td>
+                                        <td>{% for inscrit in maraude.inscriptions %}
+                                                {{ inscrit.user.prenom |capitalize }} {{ inscrit.user.nom | capitalize }} <br>
+                                            {% endfor %}
+                                        </td>
+                                        <td>{{ maraude.organisateur.prenom |capitalize }} {{ maraude.organisateur.nom |capitalize }}</td>
+                                        <td>
+                                            {% if not maraude.checkIfInscrit(user) %}
+                                                {% if date() < date(maraude.dateCloture) and not maraude.etat.libelle is same as("Créée")  %}
+                                                    <!--    <button type="button" class="btn btn-"><a href="{# {{ path('maraude_inscription', {'id': maraude.id}) }} #}" class="text-white bg-dar">S'inscrire</a></button> -->
+                                                {% endif %}
+                                                <button type="button" class="btn btn-success"> <a href="{{ path('maraude_inscription', {'id': maraude.id}) }}" class="text-white bg-dar" >S'inscrire</a></button>
+                                            {% else %}
+                                                <button type="button" class="btn btn-danger"> <a href="{{ path('maraude_desister', {'id': maraude.id}) }}" class="text-white bg-dar">Se désister</a></button>
+                                            {% endif %}
+
+                                            {% if app.user.prenom == maraude.organisateur.prenom and app.user.nom == maraude.organisateur.nom %}
+                                                <a href="{{ path('maraude_modif',{'id': maraude.id}) }}"  class="fas fa-edit text-decoration-none" title="modifier" ></a>
+                                                <!---
+                                                <button type="button" class="btn btn-primary"> <a href="{{ path('maraude_modif',{'id': maraude.id}) }}" class="text-white bg-dar" >Modifier</a></button>
+                                                --->
+                                                {% if date() < date(maraude.dateCloture)  %}
+                                                    <a href="{{ path('maraude_publier', {'id': maraude.id}) }}"  class="fa fa-bullhorn text-decoration-none" title="publier" ></a>
+                                                   <!--
+                                                    <button type="button" class="btn btn-success"> <a href="{{ path('maraude_publier', {'id': maraude.id}) }}" class="text-white bg-dar" >Publier</a></button>
+                                                 --->
+                                                {% endif %}
+                                                {% if date() < date(maraude.dateCloture) and maraude.etat.libelle is same as("Ouverte")%}
+                                                    <a href="{{ path('maraude_annulation', {'id': maraude.id}) }}"  class="fas fa-undo-alt" title="annuler" ></a>
+
+                                                    <!---
+                                                    <button type="button" class="btn btn-danger"> <a href="{{ path('maraude_annulation', {'id': maraude.id}) }}" class="text-white bg-dar" >Annuler</a></button>
+                                                    --->
+                                                {% endif %}
+                                            {% endif %}
+                                            <a href="{{ path('maraude_afficher',{'id': maraude.id}) }}" class="fas fa-eye text-decoration-none" title="afficher" ></a>
+                                            <!---
+                                            <button type="button" class="btn btn-info"><a href="{{ path('maraude_afficher',{'id': maraude.id}) }}" class="text-white bg-dar">Afficher  </a></button>
+                                            ---->
+                                          {% if app.user.prenom == maraude.organisateur.prenom and app.user.nom == maraude.organisateur.nom %}
+                                            <form method="post" action="{{ path('maraude_suppression',{'id': maraude.id}) }}"
+                                                  onsubmit="return confirm('Êtes vous sûr(e) de vouloir supprimer la maraude ?')" id="supprimerMarude">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ maraude.id) }}">
+
+                                                    <button class="fas fa-trash-alt " title="supprimer"></button>
+                                            </form>
+                                          {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                </table>
+                        </div>
+                    <!----
+                    <div class="col-4 offset-4 mt-5">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a href="{{ path('maraude_creation') }}" class="text-decoration-none">
+                                <button class="button_creer_maraude">Créer une maraude</button></a>
+                        {% endif %}
+                    </div>
+                    ----->
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <div class="text-center" id="button-creerCollecete">
+                            <button type="submit" formnovalidate ><a href="{{ path('maraude_creation') }}" >Créer une maraude</a></button>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+    <!-----scrip------------->
+    <script src="{{ asset('js/slider_home.js') }}"></script>
+
+{% endblock %}
+
+

@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Afficher l'événement{% endblock %}
+
+
+
+{% block body %}
+
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <div id="component_afficherEnvenement">
+            <div class="afficherEnvenement">
+                <h1>Afficher l'événément</h1>
+                <div class="table-responsive">
+                <table class="table table-striped table-light table-bordered table-hover">
+                    <tbody>
+                    <tr>
+                        <th>Titre</th>
+                        <td>{{ evenement.titre }}</td>
+                    </tr>
+                    <tr>
+                        <th>Descriptif</th>
+                        <td>{{ evenement.descriptif }}</td>
+                    </tr>
+                    <tr>
+                        <th>Prix</th>
+                        <td>{{ evenement.prix }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date</th>
+                        <td>{{ evenement.date ? evenement.date | date('Y m d H:i:s') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Heure début</th>
+                        <td>{{ evenement.heureDebut | date('H:i') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Heure fin</th>
+                        <td>{{ evenement.heureFin | date('H:i') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Adresse</th>
+                        <td>{{ evenement.adresse }}</td>
+                    </tr>
+                    <tr>
+                        <th>Descriptif</th>
+                        <td>{{ evenement.details }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+                <button class="button_retourAfficherEnvenement">
+                    <a href="{{ path('evenement_liste') }}">Retour</a>
+                </button>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

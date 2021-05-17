@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}action{% endblock %}
+
+{% block body %}
+    <main>
+        <!-- Conteneur principal de tout le diaporama -->
+        <div class="diapo">
+            <!-- Conteneur des "diapos" -->
+            <div class="elements">
+                <!-- Première diapo -->
+                <div class="element active">
+                    <img src="{{ asset('img/africa-1854308_1920.jpg') }}" alt="Image 1">
+                    <div class="caption">
+                        <h2>Image 1</h2>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis, saepe.</p>
+                    </div>
+                </div>
+                <!-- Deuxième diapo -->
+                <div class="element">
+                    <img src="{{ asset('img/boy-1139042_1280.jpg') }}" alt="Image 2">
+                    <div class="caption">
+                        <h2>Image 2</h2>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis, saepe.</p>
+                    </div>
+                </div>
+                <!-- Troisième diapo -->
+                <div class="element">
+                    <img src="images/index-slide03.jpg" alt="Image 3">
+                    <div class="caption">
+                        <h2>Image 3</h2>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis, saepe.</p>
+                    </div>
+                </div>
+                <!-- Quatrième diapo -->
+                <div class="element">
+                    <img src="images/index-slide02.jpg" alt="Image 2">
+                    <div class="caption">
+                        <h2>Image 4</h2>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis, saepe.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Flèches de navigation -->
+            <i id="nav-gauche" class="las la-chevron-left"></i>
+            <i id="nav-droite" class="las la-chevron-right"></i>
+        </div>
+    </main>
+    <!-- Fichiers JS -->
+    <!-- ---------page action---------------- -->
+    <script src="js/action.js"></script>
+
+    <br>
+    <br>
+    <table class=" container table table-hover">
+        <h4 class="text-center" >PLANNING COLLECTE</h4>
+        <thead>
+        <tr class="primary">
+            <th scope="col">DETAILS</th>
+            <th scope="col">DATE/HEURE</th>
+            <th scope="col">ADRESSE</th>
+            <th scope="col">RÉFÉRENTS</th>
+            <th scope="col">NBR DE PLACES</th>
+            <th scope="col">INSCRIPTION</th>
+            <th scope="col">RETRAIT</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Merci de vous munir<br> de votre gilet LSDN</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+            <td><button class="btn btn-success" type="submit">Participez</button></td>
+            <td><button class="btn btn-danger" type="submit">Retirer</button></td>
+        </tr>
+        <tr class="primary">
+            <td>Merci de vous munir<br> de votre gilet LSDN</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+            <td>@fat</td>
+            <td>@mdo</td>
+            <td><button class="btn btn-success" type="submit">Participez</button></td>
+            <td><button class="btn btn-danger" type="submit">Retirer</button></td>
+
+        </tr>
+        <tr>
+            <td>Merci de vous munir<br> de votre gilet LSDN</td>
+            <td>@twitter</td>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+            <td><button class="btn btn-success" type="submit">Participez</button></td>
+            <td><button class="btn btn-danger" type="submit">Retirer</button></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="text-center"><button type="submit" formnovalidate class="btn btn-primary text-center">Créer une collecte</button></div>
+{% endblock %}

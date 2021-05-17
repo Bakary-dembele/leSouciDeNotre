@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Notre Equipe{% endblock %}
+
+{% block body %}
+
+    <!------------image--->
+    <div>
+        <div class="img_partenaire">
+            <img src="{{ asset('img/equipe/equipe.jpg') }}" alt="partenaire">
+        </div>
+    </div>
+
+    <!------------text------>
+    <div class="titre_organigramme">
+        <h2 class="text-center">Notre équipe</h2>
+        <div class="d-flex justify-content-center">
+            <p>
+                Travailler dans une association nécessite un engagement et un investissement considérable, <br>
+                nous sommes fiers de pouvoir compter sur une équipe passionnée qui est la première <br>
+                actrice de l’éveil et de l’éducation des enfants, aider aux sans abris au quotidien.
+            </p>
+        </div>
+    </div>
+
+    <div class="texe_equipe">
+      <div id="organigramme_poste">
+          <div class="componenent_organigramme">
+              <div class="image_organigramme">
+                  <img src="{{ asset('img/orgigramme/president.jpg') }}" alt="partenaire">
+                  <div class="text-center">
+                      <h6>Said Benmbarek</h6>
+                      <p><strong>Président</strong></p>
+                  </div>
+              </div>
+
+          </div>
+          <div class="componenent_organigramme">
+              <div class="image_organigramme">
+                  <img src="{{ asset('img/orgigramme/trasorie.jpg') }}" alt="partenaire">
+                  <div class="text-center">
+                      <h6>Issa M'baye</h6>
+                      <p><strong>Trésorier</strong></p>
+                  </div>
+              </div>
+          </div>
+          <div class="componenent_organigramme">
+              <div class="image_organigramme">
+                  <img src="{{ asset('img/orgigramme/secretaire.jpg') }}" alt="partenaire">
+                  <div class="text-center">
+                      <h6> Marie Péjus</h6>
+                      <p><strong>Secrétaire</strong></p>
+                  </div>
+              </div>
+          </div>
+          <div class="componenent_organigramme">
+              <div class="image_organigramme">
+                  <img src="{{ asset('img/orgigramme/responsable.jpg') }}" alt="partenaire">
+                  <div class="text-center">
+                      <h6>Thomas Moro</h6>
+                      <p><strong>Commision</strong></p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+
+
+    <script src="{{ asset('js/organigramme.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+
+{% endblock %}
+
+

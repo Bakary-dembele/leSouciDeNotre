@@ -1,0 +1,132 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Galerie{% endblock %}
+
+{% block body %}
+<div id="galerie">
+  <div class="wrappe">
+    <h4 id="titreGalerie" class="text-center">GALERIE</h4>
+    <!-- filter Items -->
+    <nav class="text-center">
+      <div class="items">
+        <span class="item active" data-name="all">Voir tout</span>
+        <span class="item" data-name="maraudes">Maraudes</span>
+        <span class="item" data-name="collection">Collecte alimentaire</span>
+        <span class="item" data-name="jeunesse">Pôle jeunesse</span>
+      </div>
+    </nav>
+    <!-- filter Images -->
+    <div class="gallery">
+   <div class="image" data-name="maraudes"><span><img src="{{ asset('img/maraude/maraude9.jpg') }}"></span></div>
+      <div class="image" data-name="maraudes"><span><img src="{{ asset('img/maraude/maraude36.jpg') }}"></span></div>
+      <div class="image" data-name="maraudes"><span><img src="{{ asset('img/maraude/maraude37.jpg') }}"></span></div>
+      <div class="image" data-name="maraudes"><span><img src="{{ asset('img/maraude/maurade34.jpg') }}"></span></div>
+      <div class="image" data-name="maraudes"><span><img src="{{ asset('img/maraude/maraude35.jpg') }}"></span></div>
+      <div class="image" data-name="maraudes"><span><img src="{{ asset('img/maraude/maraude31.jpg') }}"></span></div>
+      <div class="image" data-name="maraudes"><span><img src="{{ asset('img/maraude/maraude24.jpg') }}"></span></div>
+      <div class="image" data-name="maraudes"><span><img src="{{ asset('img/maraude/maraude32.jpg') }}"></span></div>
+
+      <div class="image" data-name="collection"><span><img src="{{ asset('img/collecte/collecte4.jpg') }}" alt=""></span></div>
+      <div class="image" data-name="collection"><span><img src="{{ asset('img/collecte/collecte5.jpg') }}" alt=""></span></div>
+      <div class="image" data-name="collection"><span><img src="{{ asset('img/collecte/collecte6.jpg') }}" alt=""></span></div>
+      <div class="image" data-name="collection"><span><img src="{{ asset('img/collecte/collecte7.jpg') }}" alt=""></span></div>
+      <div class="image" data-name="collection"><span><img src="{{ asset('img/collecte/collecte9.jpg') }}" alt=""></span></div>
+      <div class="image" data-name="collection"><span><img src="{{ asset('img/collecte/collecte12.jpg') }}" alt=""></span></div>
+        <div class="image" data-name="collection"><span><img src="{{ asset('img/collecte/collecte1.jpg') }}" alt=""></span></div>
+        <div class="image" data-name="collection"><span><img src="{{ asset('img/collecte/collecte2.jpg') }}" alt=""></span></div>
+
+      <div class="image" data-name="jeunesse"><span><img src="{{ asset('img/jeunesse/jeunesse1.jpg') }}" alt=""></span></div>
+        <div class="image" data-name="jeunesse"><span><img src="{{ asset('img/jeunesse/jeunesse4.jpg') }}" alt=""></span></div>
+        <div class="image" data-name="jeunesse"><span><img src="{{ asset('img/jeunesse/jeunesse8.jpg') }}" alt=""></span></div>
+        <div class="image" data-name="jeunesse"><span><img src="{{ asset('img/jeunesse/jeunesse9.jpg') }}" alt=""></span></div>
+        <div class="image" data-name="jeunesse"><span><img src="{{ asset('img/jeunesse/jeunesse12.jpg') }}" alt=""></span></div>
+        <div class="image" data-name="jeunesse"><span><img src="{{ asset('img/jeunesse/jeunesse14.jpg') }}" alt=""></span></div>
+        <div class="image" data-name="jeunesse"><span><img src="{{ asset('img/jeunesse/jeunesse15.jpg') }}" alt=""></span></div>
+        <div class="image" data-name="jeunesse"><span><img src="{{ asset('img/jeunesse/jeunesse16.jpg') }}" alt=""></span></div>
+
+
+
+    </div>
+  </div>
+  <!-- fullscreen img preview box -->
+  <div class="preview-box">
+    <div class="details">
+      <span class="title" id="imageGalerie">Catégorie image : <p></p></span>
+      <span class="icon fas fa-times"></span>
+    </div>
+    <div class="image-box"><img src="" alt=""></div>
+  </div>
+  <div class="shadow"></div>
+</div>
+
+  <!-- ---------page galérie---------------- -->
+  <!-- JQuery JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Magnific Popup JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+
+  <script>
+
+    $(document).ready(function () {
+      $(".list").click(function () {
+
+        let value = $(this).attr("data-filter");
+
+        if (value == "all") {
+          $(".items").show(1000);
+        }
+        else {
+          $(".items").not("." + value).hide(1000);
+          $(".items").filter("." + value).show(1000);
+        }
+
+        $(".list").removeClass("active");
+        $(this).addClass("active");
+      });
+
+
+      $('.items-container').magnificPopup({
+        delegate: 'a', // child items selector, by clicking on it popup will open
+        type: 'image',
+        // other options
+
+        gallery: {
+          enabled: true, // set to true to enable gallery
+
+          preload: [0, 2], // read about this option in next Lazy-loading section
+
+          navigateByImgClick: true,
+
+          arrowMarkup: '<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%"></button>', // markup of an arrow button
+
+          tPrev: 'Previous (Left arrow key)', // title for left button
+          tNext: 'Next (Right arrow key)', // title for right button
+          tCounter: '<span class="mfp-counter">%curr% of %total%</span>' // markup of counter
+        },
+
+        mainClass: 'mfp-with-zoom', // this class is for CSS animation below
+
+        zoom: {
+          enabled: true, // By default it's false, so don't forget to enable it
+
+          duration: 300, // duration of the effect, in milliseconds
+          easing: 'ease-in-out', // CSS transition easing function
+
+          // The "opener" function should return the element from which popup will be zoomed in
+          // and to which popup will be scaled down
+          // By defailt it looks for an image tag:
+          opener: function (openerElement) {
+            // openerElement is the element on which popup was initialized, in this case its <a> tag
+            // you don't need to add "opener" option if this code matches your needs, it's defailt one.
+            return openerElement.is('img') ? openerElement : openerElement.find('img');
+          }
+        }
+      });
+    });
+
+  </script>
+
+ <script src="js/galerie.js"></script>
+
+{% endblock %}

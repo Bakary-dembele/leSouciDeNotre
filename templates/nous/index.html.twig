@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Qui somme-nous{% endblock %}
+
+{% block body %}
+
+        <!-------------section titre avec texte--->
+        <div class="text-center" id="titre_texte">
+            <h2>QUI SOMMES-NOUS ?</h2>
+            <P>
+                Fondée en 2018, L’association Le Souci Des Nôtres a pour but d’aider les plus démunis, sans<br>
+                critère de distinctions, par le biais d’actions solidaires, humanitaires ou sociales, en France ou<br>
+                à l’étranger à travers des maraudes, distributions et collectes alimentaires auprès de petites ou<br>
+                grandes surfaces, distributions de colis, aide aux orphelinats à l’étranger (envoi de médicaments,<br>
+                équipements sportifs, fournitures scolaires...), financement de construction de puits à l’étranger,<br>
+                organisation d’événements sportifs et rencontres pour financer des actions précises.
+            </P>
+        </div>
+    <div class="parent_nous">
+        <!-------------section france----->
+        <div>
+            <h5>EN FRANCE</h5>
+            <P>
+                Le Souci des nôtres et une association à but non lucratif. <br>
+                Celle-ci est habilités à recevoir des dons, des legs et des donations. <br>
+                L'association s'est donnée pour mission d'agir contre la pauvreté et l'exclusion en France <br>
+            </P>
+        </div>
+        <!-------------section monde----->
+        <div>
+            <h5>Dans le monde</h5>
+            <P>
+                Le Souci des nôtres et une association à but non lucratif. <br>
+                Celle-ci est habilités à recevoir des dons, des legs et des donations. <br>
+                L'association s'est donnée pour mission d'agir contre la pauvreté et l'exclusion <br>
+                dans le monde et de promouvoir la solidarité et ses valeurs. Elle rassemble des personnes  <br>
+                de toutes opinions, conditions et origines qui souhaitent faire vivre la solidarité. <br>
+            </P>
+        </div>
+        <!-------------section bref----->
+        <div class="parent_nous_image">
+            <div class="boite_image">
+                <h5>En bref</h5>
+                <div class="imge_nous_text" >
+                    <div class="image_nous">
+                        <img src="{{ asset('img/nous/bref.jpg') }}" alt="imge_bref">
+                    </div>
+                    <div>
+                        <P>
+                            Celle-ci est habilités à recevoir des dons, des legs et des donations. L'association s'est donnée pour mission <br>
+                            d'agir contre la pauvreté et l'exclusion en France et dans le monde et de promouvoir la solidarité et ses valeurs. <br>
+                            Elle rassemble des personnes de toutes opinions, conditions et origines qui souhaitent faire vivre la solidarité.
+                        </P>
+                    </div>
+                </div>
+            </div>
+            <!-------------section notre histoire------------->
+            <div class="boite_image">
+                <h5>Notre histoire</h5>
+                <div  class="imge_nous_text">
+                    <div>
+                        <img src="{{ asset('img/nous/histoire.jpg') }}" alt="imge_bref">
+                    </div>
+                    <div>
+                        <P>
+
+                            Créé en 2018, L’association Le Souci Des Nôtres a pour but d’aider les plus démunis, sans critère de distinctions, par le <br>
+                            biais d’actions solidaires, humanitaires ou sociales, en France ou à l’étranger à travers des maraudes, distributions et <br>
+                            collectes alimentaires auprès de petites ou grandes surfaces, distributions de colis, aide aux orphelinats
+                        </P>
+                    </div>
+
+                </div>
+            </div>
+            <!-------------section nos valeurs------------->
+            <div class="boite_image">
+                <h5>Nos valeurs</h5>
+                <div  class="imge_nous_text ">
+                    <div>
+                        <img src="{{ asset('img/nous/valeur.jpg') }}" alt="imge_bref">
+                    </div>
+                    <div>
+                        <P>
+                            Grâce à des personnes de tous les milieux, de tous âges et de toutes convictions, à la richesse<br>
+                            de leur diversité, le Souci de nôtre a pris une place originale parmi les associations de solidarité.
+                        </P>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

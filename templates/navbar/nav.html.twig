@@ -1,0 +1,140 @@
+
+<header>
+    <div class="container" id="container">
+        <input type="checkbox" name="" id="check">
+
+        <div class="logo-container">
+            <!--- <h3 class="logo">Brand<span>Name</span></h3>--->
+            <a class="logo" href="{{ path('home') }}"><img src="{{ asset('img/logo_lsdn.png') }}" alt="logo" class="logo"></a>
+        </div>
+
+        <div class="nav-btn">
+            <div class="nav-links">
+                <ul>
+                    <li class="nav-link" style="--i: .85s">
+                        <a href="#">Membres<i class="fas fa-caret-down"></i></a>
+                        <div class="dropdown">
+                            <ul>
+                                <li class="dropdown-link">
+                                    <a href="{{ path('main_evenement') }}">Événements</a>
+                                </li>
+                                <li class="dropdown-link">
+                                    <a href="#">Action<i class="fas fa-caret-down"></i></a>
+                                    <div class="dropdown second">
+                                        <ul>
+                                            <li class="dropdown-link">
+                                                    <a href="{{ path('maraude_planning') }}">Maraude</a>
+                                            </li>
+                                            <li class="dropdown-link">
+                                                <a href="{{ path('collecte_liste') }}">Collecte</a>
+                                            </li>
+                                            <li class="dropdown-link">
+                                                <a href="{{ path('pole_jeunesse_liste') }}">Pôle jeunesse</a>
+                                            </li>
+                                            <li class="dropdown-link">
+                                                <a href="{{ path('pole_visite_index') }}">Pôle visite</a>
+                                            </li>
+                                            <li class="dropdown-link">
+                                                <a href="{{ path('csm_index') }}">Csm</a>
+                                            </li>
+
+                                            <div class="arrow"></div>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <div class="arrow"></div>
+                                </li>
+                                <li class="dropdown-link">
+                                    <a href="{{ path('faire_don') }}">Faire un DOM</a>
+                                </li>
+                                <li class="dropdown-link">
+                                    <a href="{{ path('galerie') }}">Galerié</a>
+                                </li>
+
+                                <li class="dropdown-link">
+                                    {% if is_granted('ROLE_USER') %}
+                                        <a href="{{ path('profilUser') }}">Mon compte</a>
+                                    {% endif %}
+                                </li>
+                                <li class="dropdown-link">
+                                    <a href="{{ path('app_contact') }}">Contact</a>
+                                </li>
+                                <li class="dropdown-link">
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <a href="{{ path('users_index') }}">Gestion utilisateur</a>
+                                    {% endif %}
+                                </li>
+                                <li class="dropdown-link">
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <a href="{{ path('admin') }}">Dashboard</a>
+                                    {% endif %}
+                                </li>
+                                <div class="arrow"></div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-link" style="--i: 1.1s">
+                        <a href="#">Associations<i class="fas fa-caret-down"></i></a>
+                        <div class="dropdown">
+                            <ul>
+                                <li class="dropdown-link">
+                                    <a href="{{ path('orgarnigramme') }}">Organigramme</a>
+                                </li>
+                                <li class="dropdown-link">
+                                    <a href="{{ path('partenaire') }}">Partenariat</a>
+                                </li>
+                                <li class="dropdown-link">
+                                    <a href="{{ path('actualites') }}">Actualités</a>
+                                </li>
+
+                                <div class="arrow"></div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-link" style="--i: 1.1s">
+                        <a href="#">Institutionnels<i class="fas fa-caret-down"></i></a>
+                        <div class="dropdown">
+                            <ul>
+                                <li class="dropdown-link">
+                                    <a href="{{ path('activite') }}">Activités</a>
+                                </li>
+                                <li class="dropdown-link">
+                                    <a href="{{ path('nous') }}">Qui somme-nous ?</a>
+                                </li>
+                                <li class="dropdown-link">
+                                    <a href="{{ path('engagement') }}">Engagement</a>
+                                </li>
+
+                                <div class="arrow"></div>
+                            </ul>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="log-sign" style="--i: 1.8s">
+
+                {% if app.user %}
+                    <a href="{{ path('app_logout') }}" id="connexion" class="btn solid">Se déconnecter</a>
+                {% elseif not app.user %}
+                    <a href="{{ path('app_login') }}" id="connexion" class="btn transparent">Connexion</a>
+                    <a href="{{ path('app_register') }}" id="inscription" class="btn solid">S'incrire</a>
+                {% endif %}
+
+            </div>
+        </div>
+
+        <div class="hamburger-menu-container">
+            <div class="hamburger-menu">
+                <div></div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+

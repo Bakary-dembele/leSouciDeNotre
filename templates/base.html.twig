@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="{{ asset('img/logo_lsdn.png') }}">
+    <title>{% block title %}Le Souci de Nôtre{% endblock %}</title>
+    <!-- Axentix CSS minified version -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/axentix@1.1.0/dist/css/axentix.min.css">
+    <!-- boostrape -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- css -->
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+
+    <!--------------- page home section chiffre---------------->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+
+
+    <!--------------- page galerie---------------->
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+    <!-------------nav--------------------->
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+
+    <!---------------page action------------------------ -->
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+
+    <!--------------- page envenement---------------->
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <!------------ FONT AWESOME ------------>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+
+</head>
+
+
+
+<body>
+      <!-----nav-------->
+      {% include('navbar/nav.html.twig') %}
+
+
+      <!-----nav-------->
+        {% block body %}{% endblock %}
+
+
+          <!-----partenaire-------->
+          <div class="contaner_partaineresLogo">
+              <div id="titre_logo_partenaires">
+                  <h5>Partenaires</h5>
+              </div>
+              <div id="component_partenaire">
+                  <div class="solidarite-partage.png">
+                      <img src="{{ asset('img/logo-partainere/solidarite-partage.png') }}" alt="logo solidaire">
+                  </div>
+                  <div class="logo-charity-concept">
+                      <img src="{{ asset('img/logo-partainere/logo-charity-concept.png') }}" alt="logo solidaire">
+                  </div>
+                  <div class="alliance-solidaire">
+                      <img src="{{ asset('img/logo-partainere/alliance-solidaire.png') }}" alt="logo solidaire">
+                  </div>
+              </div>
+          </div>
+
+
+          <footer class="bg-dark text-center text-white" id="footer">
+              <div class="d-flex justify-content-around" id="footer_container">
+                  <!--------reseaux------------>
+                  <div class="col" id="col">
+                      <p><strong>Suivez-nous</strong></p>
+                      <ul class="social-network social-circle">
+                          <a href="https://fr-fr.facebook.com/pages/category/Nonprofit-Organization/Le-Souci-Des-Notres-1959362341005480/" target="_blank" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a>
+                          <a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a>
+                          <a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+                      </ul>
+                  </div>
+                  <!--------logo------------>
+                  <div class="col">
+                      <a href="{{ path('home') }}"><img src="{{ asset('img/logo_lsdn.png') }}" alt="logo" class="logo"></a>
+                      <p>
+                          Conditions d'utilisation | Politique de confidentialité
+                      </p>
+                  </div>
+                  <!--------newsletter------------>
+                  <div  class="col" id="newsLetter">
+                      <label class="form-label" for="form5Example2"><strong>Inscrivez-vous à notre newsletter</strong></label><br><br>
+                      <!--    <input type="email" id="form5Example2" class=" text-center" name="email" placeholder="Adresse e-mail" /> ---->
+
+                          <a href="{{ path('mews_letter') }}"> <button type="submit" class="btn btn-warning">S'abonner</button></a>
+
+                  </div>
+              </div>
+              <!--------copyright------------>
+              <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                  <p class="text-white"> ©Copyright 2021. Tous droits réservés <br>
+                  </p>
+              </div>
+          </footer>
+
+
+
+</body>
+        <!-- Axentix JS minified version slider -->
+        <script src="https://cdn.jsdelivr.net/npm/axentix@1.1.0/dist/js/axentix.min.js"></script>
+        <!---page évenement--->
+        <script src="{{ asset('js/evenement.js') }}"></script>
+<script src="{{ asset('js/evenements.js') }}"></script>
+          <!---page actualite--->
+        <script src="{{ asset('js/actualite.js') }}"></script>
+      <!---page envenement--->
+
+</html>

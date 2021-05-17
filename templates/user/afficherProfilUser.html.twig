@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block body %}
+
+  <div class="profil_user">
+      <strong>
+          <div class="col-sm-6 offset-sm-3" >
+              <h2 class="text-center">Mon profil</h2>
+              {{ form_start(userForm)  }}
+              {{ form_widget(userForm) }}
+          </div>
+          <br>
+
+          <div class="row col-sm-6 offset-sm-3 mt-3">
+              <div class="col-4 offset-2">
+                 <button type="submit" class="btn  btn-lg" formnovalidate>Enregistrer</button>
+                  {{ form_end(userForm) }}
+              </div>
+              <div class="col-4">
+                  <a href="{{ path('home') }}" class="btn  btn-lg">Annuler</a>
+              </div>
+          </div>
+      </strong>
+  </div>
+
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer evenement foot{% endblock %}
+
+{% block body %}
+    <!--------------------EVENEMENT FOOT------------------------>
+    <div id="component_creerEnvenementFoot">
+        <div class="container w-50">
+            <div class="col">
+                <h1 class="text-center">Créer un nouveau événement foot</h1> <br>
+                <strong>
+                    {{ form_start(form) }}
+                            {{ form_row(form.titre) }}
+                            {{ form_row(form.descriptif) }}
+                            {{ form_row(form.prix) }}
+                            {{ form_row(form.date) }}
+                            {{ form_row(form.heureDebut) }}
+                            {{ form_row(form.heureFin) }}
+                            {{ form_row(form.adresse) }}
+                    {{ form_row(form.details) }}
+
+                    <div class="d-flex justify-content-center">
+                        <button class="button_enregisterer" formnovalidate> Enregistrer</button>
+                        {{ form_end(form) }}
+                        <button class="button_annuler" formnovalidate><a href="{{ path('main_evenement') }}">Annuler</a>  </button>
+                    </div>
+                </strong>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

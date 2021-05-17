@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PaiementController!{% endblock %}
+
+{% block body %}
+    <h2>DOM asso</h2>
+    <form action="paiement.php" method="post">
+        <label for="prix">Prix</label>
+        <input type="text" name="prix" id="prix">
+        <button id="checkout-button">Faire le dom</button>
+    </form>
+
+
+{% endblock %}

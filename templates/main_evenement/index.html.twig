@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Evenement {% endblock %}
+
+{% block body %}
+
+
+    {# message flash #}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success text-center" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('warning') %}
+        <div class="alert alert-warning text-center" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('danger') %}
+        <div class="alert alert-danger text-center" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="sliderNew">
+        <button type="button" class="btn btn-danger btn-circle btn-xl"><a class="text-decoration-none" href="{{ path('faire_don')}}">FAIRE UN DOM</a></button>
+        <div class="slidesNew">
+            <div class="slideNew">
+                <div class="slideNew-data">
+                    {% for evenement in evenements %}
+                        <h1 class="text-center">{{ evenement.titre}}</h1>
+                        <p class="descrption">{{ evenement.descriptif }}</p>
+                        <p class="date"><i class="fa fa-calendar" aria-hidden="true"></i> <strong>{{ evenement.date | date('Y m d ') }}</strong></p>
+                        <p class="heure"><i class="fa fa-clock-o" aria-hidden="true"></i> <strong>{{ evenement.heureDebut| date('H:i')}}
+                                à  {{ evenement.heureFin | date('H:i') }}</strong></p>
+                        <p class="adresse"><i class="fa fa-map-marker" aria-hidden="true"></i> <strong>{{ evenement.adresse }}</strong></p>
+                        <p class="detailEvenement"><i class="fas fa-info-circle"></i>{{ evenement.details }}</p>
+                    {% endfor %}
+                    <button type="submit"><a class="text-decoration-none" href="{{ path('email_evenemenement')}}"> S'inscrire</a></button>
+                </div>
+            </div>
+            <div class="slideNew">
+                <div class="slideNew-data">
+                    {% for evenementFoot in evenementFoots %}
+                        <h1 class="text-center">{{ evenementFoot.titre }}</h1>
+                        <p class="descrption">{{ evenementFoot.descriptif }}</p>
+                        <p class="date"><i class="fa fa-calendar" aria-hidden="true"></i> <strong>{{ evenementFoot.date | date('Y m d ') }}</strong></p>
+                        <p class="heure"><i class="fa fa-clock-o" aria-hidden="true"></i> <strong>{{ evenementFoot.heureDebut| date('H:i')}}
+                                à  {{ evenementFoot.heureFin | date('H:i') }}</strong></p>
+                        <p class="adresse"><i class="fa fa-map-marker" aria-hidden="true"></i> <strong>{{ evenementFoot.adresse }}</strong></p>
+                        <p class="detailEvenement"><i class="fas fa-info-circle"></i>{{ evenementFoot.details }}</p>
+                    {% endfor %}
+                    <button><a class="text-decoration-none" href="{{ path('inscription_foot')}}"> S'inscrire</a></button>
+                </div>
+            </div>
+
+        </div>
+        <button class="arrows prev" onclick="plusslide(-1)">
+            <span><i class="fas fa-angle-left"></i></span>
+        </button>
+        <button class="arrows next" onclick="plusslide(1)">
+            <span><i class="fas fa-angle-right"></i></span>
+        </button>
+
+        <div class="dots">
+            <span onclick="currentslide(1)"></span>
+            <span onclick="currentslide(2)"></span>
+            <!--  <span onclick="currentslide(3)"></span> --->
+        </div>
+    </div>
+
+
+    <!-------------section titre avec texte--->
+    <div class="text-center" id="titre_evenement_texte">
+        <h2>Envénement</h2>
+        <P>
+            Retrouvez toutes les événement de l'association ! <br>
+           Chaque année nous organisons des événements des tournois de foot et brunch.
+        </P>
+    </div>
+
+
+
+
+    <!-------------------envenement---------------------------->
+    {% if is_granted('ROLE_ADMIN') %}
+        <!-------------------envenement button---------------------------->
+        <div class="text-center" id="button-creerEvenementBruch">
+            <button>
+                <a href="{{ path('evenement_liste') }} ">Back-office brunch</a>
+            </button>
+        </div>
+
+
+
+        <!-------------------envenement button---------------------------->
+        <div class="text-center" id="button-creerEvenementFoot">
+            <button>
+                <a href="{{ path('evenement_foot_liste') }} ">Back-office foot</a>
+            </button>
+        </div>
+
+    {% endif %}
+
+
+
+
+    <!-----scrip------------->
+    <script src="{{ asset('js/slider_evenement.js') }}"></script>
+
+
+{% endblock %}

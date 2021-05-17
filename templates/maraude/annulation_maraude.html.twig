@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% form_theme annulationForm 'bootstrap_4_layout.html.twig' %}
+<div class="conponent_modifier_maraude">
+    <div class="container">
+    <h1 class="m-3 text-center">Annuler une sortie</h1>
+    <div class="col-sm-6 offset-sm-3">
+            {{ form_start(annulationForm) }}
+            {{ form_row(annulationForm.nom) }}
+            {{ form_row(annulationForm.dateDebut) }}
+            {{ form_row(annulationForm.groupe) }}
+            {{ form_row(annulationForm.lieu) }}
+            {{ form_row(annulationForm.descriptionInfos) }}
+
+    </div>
+
+    <div class="row col-sm-8 offset-sm-2 mt-5">
+        <div class="col-5">
+            <a href="{{ path('maraude_annulation', {'id':maraude.id}) }}">
+                <button id="buton_enregistrer_modif" type="submit" class="my-3 ml-3" formnovalidate>Enregistrer</button></a>
+
+        </div>
+        <div class="col-5 offset-2">
+            <a href="{{ path('home') }}">
+                <button id="buton_maraude_retour" type="submit" class="my-3 ml-3" formnovalidate>Annuler</button></a>
+
+            {{ form_end(annulationForm) }}
+        </div>
+    </div>
+
+    </div>
+</div>
+
+{% endblock %}
+

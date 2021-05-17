@@ -1,0 +1,84 @@
+
+
+{% extends 'base.html.twig' %}
+
+    {% block title %}Afficher csm {% endblock %}
+
+
+    {% block body %}
+
+        <!------afficher la collecte--->
+        <div class="afficher_collecte">
+            <div class="container">
+                <h1 class="text-center my-4">Afficher csm</h1>
+                <div class="row col-sm-10 offset-sm-1">
+                    <div class="table-responsive">
+                    <table class="table table-light table-hover ">
+                        <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ csm.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Details</th>
+                            <td>{{ csm.details }}</td>
+                        </tr>
+                        <tr>
+                            <th>Date/début</th>
+                            <td>{{ csm.dateHeure ? csm.dateHeure|date('Y-m-d H:i:s') : '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Date/clôture</th>
+                            <td>{{ csm.dateCloture ? csm.dateCloture|date('Y-m-d H:i:s') : '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Adresse</th>
+                            <td>{{csm.adresse }}</td>
+                        </tr>
+                        <tr>
+                            <th>Réferent</th>
+                            <td>{{ csm.referent.nom  | capitalize}} {{csm.referent.prenom  | capitalize}}</td>
+                        </tr>
+                        <tr>
+                            <th>Nombre de place</th>
+                            <td>{{ csm.nombreDePlace }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+
+                <!------liste participants--->
+                <div class="liste_collecte_participant">
+                    <div>
+                        <h4 class="text-center">Liste des participants inscrits</h4>
+                        <div class="table-responsive">
+                        <table class="table table-striped table-light table-bordered table-hover">
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            {% for inscrit in csm.inscriptionCsms %}
+                                <tr>
+                                    <td><a href="{{ path('profilUsers',{'id': inscrit.user.id}) }}">
+                                            {{ inscrit.user.nom | capitalize}}</a></td>
+                                    <td><a href="{{ path('profilUsers',{'id': inscrit.user.id}) }}">
+                                            {{ inscrit.user.prenom }}  </a></td></td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                        </div>
+                    </div>
+                    <div class="conponent_button_retour_collecte">
+                        <button class="button_retour_afficherCollecte">
+                            <a href="{{ path ("csm_index") }}" class="">Retour</a>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    {% endblock %}
+
+
+
+

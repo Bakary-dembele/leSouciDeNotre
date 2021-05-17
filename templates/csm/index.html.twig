@@ -1,0 +1,191 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Csm{% endblock %}
+
+
+
+{% block body %}
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success text-center" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('warning') %}
+        <div class="alert alert-warning text-center" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('danger') %}
+        <div class="alert alert-danger text-center" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="sliderNews">
+        <button type="button" class="btn btn-danger btn-circle btn-xl"><a class="text-decoration-none" href="{{ path('faire_don')}}">FAIRE UN DOM</a></button>
+        <div class="slidesNews">
+            <div class="slideNews">
+            </div>
+            <div class="slideNews">
+            </div>
+            <!--   <div class="slideNew">
+                   <div class="slideNew-data">
+                       <h1>This is Slide # 3</h1>
+                       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit veniam fuga voluptatem voluptas illum deserunt soluta quasi ipsam quam qui eligendi autem laudantium inventore, voluptatibus blanditiis nobis, tempora architecto atque.</p>
+                       <button>SHARE</button>
+                   </div>
+               </div>-->
+        </div>
+        <!---
+              <button class="arrows prev" onclick="plusslides(-1)">
+                  <span><i class="fas fa-angle-left"></i></span>
+              </button>
+              <button class="arrows next" onclick="plusslides(1)">
+                  <span><i class="fas fa-angle-right"></i></span>
+              </button> ---->
+
+        <div class="dots">
+            <span onclick="currentslide(1)"></span>
+            <span onclick="currentslide(2)"></span>
+        </div>
+    </div>
+
+
+
+
+
+    <!--------evenement titre------>
+    <div id="containe_collecte">
+        <div class="text-center" id="titre_collecet">
+            <h2>ACTION CSM</h2>
+        </div>
+
+        <div id="component_collecte">
+            <!----slider collecte---------->
+            <div class="container_collecte">
+                <div class="slides">
+                    <div class="slide">
+                        <img src="{{asset('img/actualite/ancien.jpeg')}}" alt="">
+                    </div>
+                    <div class="slide">
+                        <div class="slide">
+                            <img src="{{asset('img/boy-1139042_1280.jpg')}}" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide-controls">
+                    <button id="prev-btn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button id="next-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+
+            <!----texte------>
+            <div>
+                <p>
+                    La mission principale de Souci de nôtre est d’aider les plus démunis, sans critère <br>
+                    de distinctions, par le biais d’actions solidaires, humanitaires ou sociales, <br>
+                    en France ou à l’étranger à travers des maraudes, distributions et collectes <br>
+                    alimentaires auprès de petites ou grandes surfaces, distributions de colis, <br>
+                    aide aux orphelinats à l’étranger (envoi de médicaments, équipements sportifs, <br>
+                    fournitures scolaires...), financement de construction de puits à l’étranger, <br>
+                    organisation d’événements sportifs et rencontres pour financer des actions précises.
+
+                </p>
+                <p>
+                    Le souci de nôtre s’engage à contribuer à la construction d’un monde dans lequel <br>
+                    chaque être humain peut vivre et s’épanouir dignement. Son objectif principal est <br>
+                    d’améliorer de manière durable les conditions d’existence et le développement des <br>
+                    populations les plus défavorisées en France et dans le Monde.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!----tableau collecte------>
+    {% if is_granted('ROLE_USER') %}
+    <div id="component_tableau-collecte">
+        <div class="table-responsive">
+        <table class="container-full  table table-striped table-light table-bordered table-hover">
+            <h4 class="text-center" >PLANNING CMS</h4>
+            <thead>
+            <tr class="primary">
+                <th scope="col">Details</th>
+                <th scope="col">Date/Début</th>
+                <th scope="col">Date/Clôture</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Référents</th>
+                <th scope="col">Nbr/places</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            {% endif %}
+
+            <tbody>
+            {% for csm in csms %}
+                {% if is_granted('ROLE_USER') %}
+                    <tr>
+                    <td>{{ csm.details }}</td>
+                    <td>{{  csm.dateHeure | date('d/m/Y H:i') }}</td>
+                    <td>{{  csm.dateCloture | date('d/m/Y H:i') }}</td>
+                    <td>{{  csm.adresse }}</td>
+                    <td>{{ csm.referent.prenom }} {{  csm.referent.nom | capitalize }}</td>
+                    <td><strong>{{  csm.inscriptionCsms.count | default('0')}}/{{  csm.nombreDePlace }}</strong></td>
+                    <td>
+                    {% if not  csm.checkIfInscrit(app.user) %}
+                        <button type="button" class="btn btn-success"><a href="{{ path('csm_inscription', {'id':  csm.id}) }}" class="text-white bg-dar text-decoration-none" >Participez</a></button>
+                    {% else %}
+                        <button type="button" class="btn btn-danger"><a href="{{ path('csm_desister', {'id': csm.id}) }}" class="text-white bg-dar text-decoration-none " >Désister</a></button>
+                    {% endif %}
+
+                    <a href="{{ path('csm_afficher', {'id': csm.id}) }}" class="fas fa-eye text-decoration-none" title="afficher"  ></a>
+                    <!---
+                    <button type="button" class="btn btn-info">
+                        <a href="{{ path('csm_afficher', {'id': csm.id}) }}" class="text-white bg-dar text-decoration-none">Afficher</a>
+                    </button>
+                    -->
+                {% endif %}
+
+                {% if is_granted('ROLE_ADMIN') %}
+                {% if app.user.prenom == csm.referent.prenom and app.user.nom == csm.referent.nom %}
+                    <a href="{{ path('csm_modifier', {'id': csm.id}) }}"  class="fas fa-edit text-decoration-none" title="modifier" ></a>
+                {% endif %}
+                    <!----
+                    <button type="button" class="btn btn-primary">
+                        <a href="{{ path('csm_modifier', {'id': csm.id}) }}" class="text-white bg-dar text-decoration-none">Modifier</a>
+                    </button>
+                 -->
+                    {% if app.user.prenom == csm.referent.prenom and app.user.nom == csm.referent.nom %}
+                        <form method="post" action="{{ path('csm_supprimer', {'id':csm.id}) }}" id="supprimer"
+                              onsubmit="return confirm('Êtes-vous sûr de bien vouloir supprimer cet élément?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ csm.id) }}">
+                            <button class="fas fa-trash-alt " title="supprimer" ></button>
+                        </form>
+                    {% endif %}
+                {% endif %}
+                </td>
+
+            {% else %}
+                <tr><td colspan="6">Aucun enregistrement trouvé</td></tr>
+            {% endfor %}
+            </tbody>
+        </table>
+       </div>
+        {% if is_granted('ROLE_ADMIN') %}
+            <div class="text-center" id="button-creerCollecete">
+                <button type="submit" formnovalidate ><a href="{{ path('csm_creer') }}" >Créer un csm</a></button>
+            </div>
+        {% endif %}
+
+    </div>
+
+    <!-----scrip------------->
+    <script src="{{ asset('js/slider_home.js') }}"></script>
+
+{% endblock %}

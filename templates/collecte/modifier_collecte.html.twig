@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Collecte{% endblock %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+
+ <div id="component_creerModifierEnvenement">
+     <div class="container w-50">
+         <div class="col">
+             <h1 class="text-center">Modifier une collecte</h1> <br>
+             <strong>
+                 {{ form_start(form) }}
+                 {{ form_row(form.details) }}
+                 {{ form_row(form.dateHeure) }}
+                 {{ form_row(form.dateCloture) }}
+                 {{ form_row(form.adresse) }}
+                 {{ form_row(form.nombreDePlace) }}
+                 <div class="d-flex justify-content-center">
+                         <button class="button_modifier" formnovalidate>Enregistrer</button>
+                         {{ form_end(form) }}
+                         <button class="button_retour_maraude" formnovalidate>Retour</button>
+                         <form method="post" action="{{ path('collecte_supprimer', {'id': collecte.id}) }}"
+                               onsubmit="return confirm('Êtes-vous sûr de bien vouloir supprimer cet élément?');">
+                             <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ collecte.id) }}">
+                             <button class="button_supprimer">Supprimer</button>
+                         </form>
+                 </div>
+             </strong>
+         </div>
+         <div>
+         </div>
+     </div>
+ </div>
+
+{% endblock %}
